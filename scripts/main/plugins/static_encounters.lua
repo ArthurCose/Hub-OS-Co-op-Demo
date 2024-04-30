@@ -17,6 +17,7 @@ local SURPRISED_EMOTE = "EXCLAMATION MARK!"
 ---@class StaticEncountersPlugin
 ---@field private encounters StaticEncounter[]
 ---@field private caught_players table<ActorId, boolean>
+---@field private results_listeners fun(event)[]
 local StaticEncountersPlugin = {}
 
 ---@param activity Activity
@@ -24,7 +25,8 @@ local StaticEncountersPlugin = {}
 function StaticEncountersPlugin:new(activity)
   local plugin = {
     encounters = {},
-    caught_players = {}
+    caught_players = {},
+    results_listeners = {}
   }
   setmetatable(plugin, self)
   self.__index = self
@@ -98,6 +100,11 @@ function StaticEncountersPlugin:remove_encounter(encounter)
   end
 end
 
+---@param callback fun(event)
+function StaticEncountersPlugin:on_results(callback)
+  table.insert(self.results_listeners, callback)
+end
+
 ---@private
 ---@param encounter StaticEncounter
 function StaticEncountersPlugin:start_encounter(encounter)
@@ -125,23 +132,19 @@ function StaticEncountersPlugin:start_encounter(encounter)
 
   for _, promise in ipairs(promises) do
     promise.and_then(function(event)
+      -- unmark player as in encounter
+      self.caught_players[event.player_id] = nil
+
       if not event then
         -- player disconnected
         return
       end
 
-      -- unlock input on completion and update health
+      -- unlock input on completion
       Net.unlock_player_input(event.player_id)
-      Net.set_player_health(event.player_id, event.health)
-      Net.set_player_emotion(event.player_id, event.emotion)
 
-      -- unmark player as in encounter
-
-      self.caught_players[event.player_id] = false
-
-      if event.health == 0 then
-        -- deleted, kick out to the index
-        Net.transfer_player(event.player_id, "hubos.konstinople.dev", true)
+      for _, listener in ipairs(self.results_listeners) do
+        listener(event)
       end
     end)
   end

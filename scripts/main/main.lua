@@ -55,6 +55,12 @@ Net:on_any(function(event_name, event)
   end
 
   player.activity:emit(event_name, event, player)
+
+  if event_name == "player_move" then
+    player.x = event.x
+    player.y = event.y
+    player.z = event.z
+  end
 end)
 
 Net:on("player_request", function(event)

@@ -1,25 +1,23 @@
 local Activity = require("scripts/main/activity")
-local StaticEncountersPlugin = require("scripts/main/plugins/static_encounters")
+local BotPathPlugin = require("scripts/main/plugins/bot_path")
+local LetsGoPlugin = require("scripts/main/plugins/lets_go")
 local ButtonsPlugin = require("scripts/main/plugins/buttons")
 local DoorsPlugin = require("scripts/main/plugins/doors")
+local ExplodingEffect = require("scripts/main/utils/exploding_effect")
 local Direction = require("scripts/libs/direction")
 local Ampstr = require("scripts/libs/ampstr")
 
 local SURPRISED_EMOTE = "EXCLAMATION MARK!"
 
----@class CoopMissionPlayerData
----@field player Player
----@field in_encounter? boolean
-
 ---@class CoopMission
 ---@field alive_time number
 ---@field area_id any
 ---@field activity Activity
----@field static_encounters_plugin StaticEncountersPlugin
+---@field lets_go_plugin LetsGoPlugin
+---@field bot_path_plugin BotPathPlugin
 ---@field buttons_plugin ButtonsPlugin
 ---@field doors_plugin DoorsPlugin
 ---@field spawn_points TiledObject[]
----@field player_data_map table<any, CoopMissionPlayerData>
 ---@field default_encounter_path string
 ---@field boss_object TiledObject
 ---@field boss_bot_id any
@@ -40,10 +38,10 @@ function CoopMission:new(activity, base_area_id)
   mission.alive_time = 0
   mission.area_id = area_id
   mission.activity = activity
-  mission.static_encounters_plugin = StaticEncountersPlugin:new(activity)
+  mission.bot_path_plugin = BotPathPlugin:new(activity)
+  mission.lets_go_plugin = LetsGoPlugin:new(activity)
   mission.buttons_plugin = ButtonsPlugin:new(activity, area_id)
   mission.doors_plugin = DoorsPlugin:new(area_id)
-  mission.player_data_map = {}
   mission.spawn_points = {}
   mission.default_encounter_path = Net.get_area_custom_property(area_id, "Default Encounter")
   mission.boss_buttons_pressed = 0
@@ -66,10 +64,37 @@ function CoopMission:init(activity)
 
     if object.name == "Spawn" then
       self.spawn_points[#self.spawn_points + 1] = object
-    elseif object.name == "Encounter" then
-      self.static_encounters_plugin:register_encounter({
+    elseif object.name == "Virus" then
+      local bot_id = Net.create_bot({
+        area_id = self.area_id,
+        solid = false,
+        texture_path = object.custom_properties["Texture"],
+        animation_path = object.custom_properties["Animation"],
+        x = object.x,
+        y = object.y,
+        z = object.z,
+      })
+
+      local path = { object }
+      local next_id = tonumber(object.custom_properties["Next"])
+
+      while next_id ~= nil and next_id ~= object.id do
+        local next_object = Net.get_object_by_id(self.area_id, next_id) --[[@as TiledObject]]
+        table.insert(path, next_object)
+        next_id = tonumber(next_object.custom_properties["Next"])
+      end
+
+      self.lets_go_plugin:register_bot({
+        bot_id = bot_id,
         package_path = self.default_encounter_path,
-        bounds = object,
+        radius = 0.42,
+        shared = true
+      })
+
+      self.bot_path_plugin:register_bot({
+        bot_id = bot_id,
+        path = path,
+        speed = tonumber(object.custom_properties["Speed"]),
       })
     elseif object.name == "Button" then
       self.buttons_plugin:register_button(object)
@@ -108,6 +133,40 @@ function CoopMission:init(activity)
     end
   end
 
+  -- pause movements when viruses are in an encounter
+  self.lets_go_plugin:on_collision(function(bot_id, player_id)
+    self.bot_path_plugin:disable_bot(bot_id)
+    Net.set_player_emote(player_id, SURPRISED_EMOTE)
+  end)
+
+  self.lets_go_plugin:on_encounter_end(function(bot_id)
+    self.bot_path_plugin:enable_bot(bot_id)
+  end)
+
+  self.lets_go_plugin:on_results(function(bot_id, event)
+    -- update health + emotion
+    Net.set_player_health(event.player_id, event.health)
+    Net.set_player_emotion(event.player_id, event.emotion)
+
+    if event.health == 0 then
+      -- deleted, kick out to the index
+      Net.transfer_player(event.player_id, "hubos.konstinople.dev", true)
+    elseif not event.ran then
+      -- victory
+      self.bot_path_plugin:remove_bot(bot_id)
+      self.lets_go_plugin:remove_bot(bot_id)
+
+      -- explode + delete after 3s
+      local effect = ExplodingEffect:new(bot_id)
+
+      Async.sleep(3).and_then(function()
+        effect:remove()
+        Net.remove_bot(bot_id)
+      end)
+    end
+  end)
+
+  -- handle button presses
   self.buttons_plugin:on_state_change(function(button)
     if button.press_count == 0 then
       self:release_button(button)
@@ -116,6 +175,7 @@ function CoopMission:init(activity)
     end
   end)
 
+  -- handle ampstr interaction
   activity:on("actor_interaction", function(event, player)
     if event.button ~= 0 or event.actor_id ~= self.ampstr_bot_id then
       return
@@ -137,27 +197,23 @@ function CoopMission:init(activity)
     end)
   end)
 
+  -- setup players
   activity:on("player_join", function(event, player)
     self:connect(player)
   end)
 
-  activity:on("player_leave", function(event)
-    self.player_data_map[event.player_id] = nil
-  end)
-
+  -- cleanup
   activity:on("activity_destroyed", function()
+    for _, id in ipairs(Net.list_bots(self.area_id)) do
+      Net.remove_bot(id)
+    end
+
     Net.remove_area(self.area_id)
-    Net.remove_bot(self.boss_bot_id)
-    Net.remove_bot(self.ampstr_bot_id)
   end)
 end
 
 ---@param player Player
 function CoopMission:connect(player)
-  self.player_data_map[player.id] = {
-    player = player
-  }
-
   local point = table.remove(self.spawn_points, 1)
 
   if not point then
@@ -195,8 +251,8 @@ CoopMission.animate_boss_intro = Async.create_function(function(self)
   -- collect player ids
   local player_ids = {}
 
-  for id, _ in pairs(self.player_data_map) do
-    player_ids[#player_ids + 1] = id
+  for _, player in pairs(self.activity:player_list()) do
+    player_ids[#player_ids + 1] = player.id
   end
 
   -- config

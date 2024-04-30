@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="isometric" renderorder="right-down" compressionlevel="0" width="32" height="32" tilewidth="64" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="96">
+<map version="1.10" tiledversion="1.10.2" orientation="isometric" renderorder="right-down" compressionlevel="0" width="32" height="32" tilewidth="64" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="109">
  <properties>
   <property name="Background Animation" value=""/>
-  <property name="Background Texture" value="/server/assets/backgrounds/purple.png"/>
+  <property name="Background Texture" value="/server/assets/backgrounds/balloons.png"/>
   <property name="Background Vel X" type="float" value="0.25"/>
   <property name="Background Vel Y" type="float" value="0.125"/>
   <property name="Name" value="???"/>
   <property name="Song" value=""/>
  </properties>
  <tileset firstgid="1" source="../assets/tiles/panel base.tsx"/>
- <tileset firstgid="3" source="../assets/tiles/boss_panel.tsx"/>
- <tileset firstgid="5" source="../assets/tiles/skull_gate.tsx"/>
- <tileset firstgid="8" source="../assets/tiles/button.tsx"/>
- <tileset firstgid="12" source="../assets/tiles/gate.tsx"/>
+ <tileset firstgid="7" source="../assets/tiles/boss_panel.tsx"/>
+ <tileset firstgid="9" source="../assets/tiles/skull_gate.tsx"/>
+ <tileset firstgid="12" source="../assets/tiles/button.tsx"/>
+ <tileset firstgid="16" source="../assets/tiles/gate.tsx"/>
  <layer id="6" name="Tile Layer 1" width="32" height="32">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,1,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,1,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,1,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,1,1,1,1,0,1,1,1,1,1,1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,1,1,1,1,0,1,1,1,1,1,1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,6,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,4,4,4,4,0,0,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,4,4,4,4,5,5,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,4,4,4,4,0,0,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,6,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,5,0,6,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,6,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,5,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,4,4,4,0,0,0,4,4,4,4,4,0,0,4,4,4,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,4,6,4,5,5,5,4,4,4,4,4,0,0,4,6,4,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,4,4,4,0,0,0,4,4,4,4,4,0,0,4,4,4,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,5,0,5,0,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,5,5,5,5,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -50,19 +50,19 @@
 </data>
  </layer>
  <objectgroup id="5" name="Object Layer 1">
-  <object id="54" name="Boss Door" gid="2147483653" x="363.5" y="208.5" width="34" height="52"/>
-  <object id="59" gid="8" x="640" y="512" width="42" height="27"/>
-  <object id="63" gid="8" x="160" y="512" width="42" height="27"/>
-  <object id="64" gid="10" x="384" y="128" width="42" height="27"/>
-  <object id="65" gid="10" x="384" y="256" width="42" height="27"/>
-  <object id="66" gid="12" x="416.5" y="603.5" width="34" height="52"/>
-  <object id="67" name="Spawn" x="528" y="784">
+  <object id="54" name="Boss Door" gid="2147483657" x="367.5" y="202.5" width="34" height="52"/>
+  <object id="59" gid="12" x="480" y="384" width="42" height="27"/>
+  <object id="63" gid="12" x="385" y="353" width="42" height="27"/>
+  <object id="64" gid="14" x="384" y="128" width="42" height="27"/>
+  <object id="65" gid="14" x="384" y="256" width="42" height="27"/>
+  <object id="66" gid="2147483664" x="367.5" y="425.5" width="34" height="52"/>
+  <object id="67" name="Spawn" x="496" y="784">
    <properties>
     <property name="Direction" value="Up Right"/>
    </properties>
    <point/>
   </object>
-  <object id="68" name="Spawn" x="560" y="784">
+  <object id="68" name="Spawn" x="528" y="784">
    <properties>
     <property name="Direction" value="Up Right"/>
    </properties>
@@ -91,13 +91,13 @@
   <object id="73" name="Boss Ready" x="304" y="176">
    <point/>
   </object>
-  <object id="74" name="Button" x="160" y="512" width="20" height="20">
+  <object id="74" name="Button" x="386" y="354" width="20" height="20">
    <properties>
     <property name="Door" type="object" value="66"/>
     <property name="Object" type="object" value="63"/>
    </properties>
   </object>
-  <object id="75" name="Button" x="640" y="512" width="20" height="20">
+  <object id="75" name="Button" x="480" y="384" width="20" height="20">
    <properties>
     <property name="Door" type="object" value="66"/>
     <property name="Object" type="object" value="59"/>
@@ -113,7 +113,71 @@
     <property name="Object" type="object" value="64"/>
    </properties>
   </object>
-  <object id="94" name="Encounter" x="636" y="568" width="40.5" height="32.5"/>
-  <object id="95" name="Encounter" x="381" y="425" width="74" height="49.5"/>
+  <object id="97" x="560" y="336">
+   <properties>
+    <property name="Next" type="object" value="98"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="98" name="Virus" x="560" y="432">
+   <properties>
+    <property name="Animation" value="/server/assets/bots/mettaur.animation"/>
+    <property name="Next" type="object" value="103"/>
+    <property name="Speed" type="float" value="0.05"/>
+    <property name="Texture" value="/server/assets/bots/mettaur.png"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="99" name="Virus" x="336" y="432">
+   <properties>
+    <property name="Animation" value="/server/assets/bots/mettaur.animation"/>
+    <property name="Next" type="object" value="101"/>
+    <property name="Speed" type="float" value="0.17"/>
+    <property name="Texture" value="/server/assets/bots/mettaur.png"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="101" name="Virus" x="336" y="336">
+   <properties>
+    <property name="Animation" value="/server/assets/bots/mettaur.animation"/>
+    <property name="Next" type="object" value="102"/>
+    <property name="Speed" type="float" value="0.05"/>
+    <property name="Texture" value="/server/assets/bots/mettaur.png"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="102" name="Virus" x="496" y="336">
+   <properties>
+    <property name="Animation" value="/server/assets/bots/mettaur.animation"/>
+    <property name="Next" type="object" value="97"/>
+    <property name="Speed" type="float" value="0.05"/>
+    <property name="Texture" value="/server/assets/bots/mettaur.png"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="103" name="Virus" x="400" y="432">
+   <properties>
+    <property name="Animation" value="/server/assets/bots/mettaur.animation"/>
+    <property name="Next" type="object" value="99"/>
+    <property name="Speed" type="float" value="0.05"/>
+    <property name="Texture" value="/server/assets/bots/mettaur.png"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="104" gid="12" x="224" y="512" width="42" height="27"/>
+  <object id="105" name="Button" x="224" y="512" width="20" height="20">
+   <properties>
+    <property name="Door" type="object" value="108"/>
+    <property name="Object" type="object" value="104"/>
+   </properties>
+  </object>
+  <object id="106" gid="12" x="640" y="512" width="42" height="27"/>
+  <object id="107" name="Button" x="640" y="512" width="20" height="20">
+   <properties>
+    <property name="Door" type="object" value="108"/>
+    <property name="Object" type="object" value="106"/>
+   </properties>
+  </object>
+  <object id="108" gid="16" x="458.5" y="591.5" width="34" height="52"/>
  </objectgroup>
 </map>

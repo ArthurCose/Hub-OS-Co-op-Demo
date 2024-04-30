@@ -1,13 +1,20 @@
 ---@class Player
 ---@field activity? Activity
 ---@field id any
+---@field x number
+---@field y number
+---@field z number
 local Player = {}
 Player.__index = Player
 
 ---@return Player
 function Player:new(id)
+  local position = Net.get_player_position(id)
   local player = {
-    id = id
+    id = id,
+    x = position.x,
+    y = position.y,
+    z = position.z
   }
 
   setmetatable(player, self)
