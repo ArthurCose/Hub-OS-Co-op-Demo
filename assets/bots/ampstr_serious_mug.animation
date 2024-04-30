@@ -1,0 +1,5 @@
+animation state="TALK"
+frame x="0" y="0" w="40" h="48"
+
+animation state="IDLE"
+frame x="0" y="0" w="40" h="48"
