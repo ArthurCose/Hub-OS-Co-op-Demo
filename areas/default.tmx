@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="isometric" renderorder="right-down" compressionlevel="0" width="32" height="32" tilewidth="64" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="109">
+<map version="1.10" tiledversion="1.10.2" orientation="isometric" renderorder="right-down" compressionlevel="0" width="24" height="28" tilewidth="64" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="109">
  <properties>
   <property name="Background Animation" value=""/>
   <property name="Background Texture" value="/server/assets/backgrounds/balloons.png"/>
@@ -13,68 +13,64 @@
  <tileset firstgid="9" source="../assets/tiles/skull_gate.tsx"/>
  <tileset firstgid="12" source="../assets/tiles/button.tsx"/>
  <tileset firstgid="16" source="../assets/tiles/gate.tsx"/>
- <layer id="6" name="Tile Layer 1" width="32" height="32">
+ <layer id="6" name="Tile Layer 1" width="24" height="28">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,6,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,4,4,4,4,0,0,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,4,4,4,4,5,5,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,4,4,4,4,0,0,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,6,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,5,0,6,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,6,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,5,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,4,4,4,0,0,0,4,4,4,4,4,0,0,4,4,4,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,4,6,4,5,5,5,4,4,4,4,4,0,0,4,6,4,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,4,4,4,0,0,0,4,4,4,4,4,0,0,4,4,4,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,5,0,5,0,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,5,5,5,5,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,6,4,4,4,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,4,4,4,4,0,0,4,4,4,4,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,4,4,4,4,5,5,4,4,4,4,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,4,4,4,4,0,0,4,4,4,4,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,6,4,4,4,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,5,5,5,5,5,5,5,5,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,5,0,6,0,0,0,0,5,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,5,0,0,0,0,6,0,5,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,5,5,5,5,5,5,5,5,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,5,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,4,4,4,0,0,0,4,4,4,4,4,0,0,4,4,4,0,0,0,0,
+0,0,0,0,4,6,4,5,5,5,4,4,4,4,4,0,0,4,6,4,0,0,0,0,
+0,0,0,0,4,4,4,0,0,0,4,4,4,4,4,0,0,4,4,4,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,5,0,0,0,0,0,
+0,0,0,0,0,0,0,5,0,5,0,4,4,4,4,4,4,4,4,4,0,0,0,0,
+0,0,0,0,0,0,0,5,5,5,5,4,4,4,4,4,4,4,4,4,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,4,4,4,4,4,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,4,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
  <objectgroup id="5" name="Object Layer 1">
-  <object id="54" name="Boss Door" gid="2147483657" x="367.5" y="202.5" width="34" height="52"/>
-  <object id="59" gid="12" x="480" y="384" width="42" height="27"/>
-  <object id="63" gid="12" x="385" y="353" width="42" height="27"/>
-  <object id="64" gid="14" x="384" y="128" width="42" height="27"/>
-  <object id="65" gid="14" x="384" y="256" width="42" height="27"/>
-  <object id="66" gid="2147483664" x="367.5" y="425.5" width="34" height="52"/>
-  <object id="67" name="Spawn" x="496" y="784">
+  <object id="54" name="Boss Door" gid="2147483657" x="303.5" y="138.5" width="34" height="52"/>
+  <object id="59" gid="12" x="416" y="320" width="42" height="27"/>
+  <object id="63" gid="12" x="321" y="289" width="42" height="27"/>
+  <object id="64" gid="14" x="320" y="64" width="42" height="27"/>
+  <object id="65" gid="14" x="320" y="192" width="42" height="27"/>
+  <object id="66" gid="2147483664" x="303.5" y="361.5" width="34" height="52"/>
+  <object id="67" name="Spawn" x="432" y="720">
    <properties>
     <property name="Direction" value="Up Right"/>
    </properties>
    <point/>
   </object>
-  <object id="68" name="Spawn" x="528" y="784">
+  <object id="68" name="Spawn" x="464" y="720">
    <properties>
     <property name="Direction" value="Up Right"/>
    </properties>
    <point/>
   </object>
-  <object id="69" name="Ampstr" x="208" y="208">
+  <object id="69" name="Ampstr" x="144" y="144">
    <properties>
     <property name="Direction" value="Down Right"/>
    </properties>
    <point/>
   </object>
-  <object id="70" name="Boss" x="240" y="208">
+  <object id="70" name="Boss" x="176" y="144">
    <properties>
     <property name="Animation" value="/server/assets/bots/heel-navi.animation"/>
     <property name="Direction" value="Up Left"/>
@@ -85,41 +81,41 @@
    </properties>
    <point/>
   </object>
-  <object id="72" name="Boss Ready" x="304" y="240">
+  <object id="72" name="Boss Ready" x="240" y="176">
    <point/>
   </object>
-  <object id="73" name="Boss Ready" x="304" y="176">
+  <object id="73" name="Boss Ready" x="240" y="112">
    <point/>
   </object>
-  <object id="74" name="Button" x="386" y="354" width="20" height="20">
+  <object id="74" name="Button" x="322" y="290" width="20" height="20">
    <properties>
     <property name="Door" type="object" value="66"/>
     <property name="Object" type="object" value="63"/>
    </properties>
   </object>
-  <object id="75" name="Button" x="480" y="384" width="20" height="20">
+  <object id="75" name="Button" x="416" y="320" width="20" height="20">
    <properties>
     <property name="Door" type="object" value="66"/>
     <property name="Object" type="object" value="59"/>
    </properties>
   </object>
-  <object id="76" name="Button" x="384" y="256" width="20" height="20">
+  <object id="76" name="Button" x="320" y="192" width="20" height="20">
    <properties>
     <property name="Object" type="object" value="65"/>
    </properties>
   </object>
-  <object id="77" name="Button" x="384" y="128" width="20" height="20">
+  <object id="77" name="Button" x="320" y="64" width="20" height="20">
    <properties>
     <property name="Object" type="object" value="64"/>
    </properties>
   </object>
-  <object id="97" x="560" y="336">
+  <object id="97" x="496" y="272">
    <properties>
     <property name="Next" type="object" value="98"/>
    </properties>
    <point/>
   </object>
-  <object id="98" name="Virus" x="560" y="432">
+  <object id="98" name="Virus" x="496" y="368">
    <properties>
     <property name="Animation" value="/server/assets/bots/mettaur.animation"/>
     <property name="Next" type="object" value="103"/>
@@ -128,7 +124,7 @@
    </properties>
    <point/>
   </object>
-  <object id="99" name="Virus" x="336" y="432">
+  <object id="99" name="Virus" x="272" y="368">
    <properties>
     <property name="Animation" value="/server/assets/bots/mettaur.animation"/>
     <property name="Next" type="object" value="101"/>
@@ -137,7 +133,7 @@
    </properties>
    <point/>
   </object>
-  <object id="101" name="Virus" x="336" y="336">
+  <object id="101" name="Virus" x="272" y="272">
    <properties>
     <property name="Animation" value="/server/assets/bots/mettaur.animation"/>
     <property name="Next" type="object" value="102"/>
@@ -146,7 +142,7 @@
    </properties>
    <point/>
   </object>
-  <object id="102" name="Virus" x="496" y="336">
+  <object id="102" name="Virus" x="432" y="272">
    <properties>
     <property name="Animation" value="/server/assets/bots/mettaur.animation"/>
     <property name="Next" type="object" value="97"/>
@@ -155,7 +151,7 @@
    </properties>
    <point/>
   </object>
-  <object id="103" name="Virus" x="400" y="432">
+  <object id="103" name="Virus" x="336" y="368">
    <properties>
     <property name="Animation" value="/server/assets/bots/mettaur.animation"/>
     <property name="Next" type="object" value="99"/>
@@ -164,20 +160,20 @@
    </properties>
    <point/>
   </object>
-  <object id="104" gid="12" x="224" y="512" width="42" height="27"/>
-  <object id="105" name="Button" x="224" y="512" width="20" height="20">
+  <object id="104" gid="12" x="160" y="448" width="42" height="27"/>
+  <object id="105" name="Button" x="160" y="448" width="20" height="20">
    <properties>
     <property name="Door" type="object" value="108"/>
     <property name="Object" type="object" value="104"/>
    </properties>
   </object>
-  <object id="106" gid="12" x="640" y="512" width="42" height="27"/>
-  <object id="107" name="Button" x="640" y="512" width="20" height="20">
+  <object id="106" gid="12" x="576" y="448" width="42" height="27"/>
+  <object id="107" name="Button" x="576" y="448" width="20" height="20">
    <properties>
     <property name="Door" type="object" value="108"/>
     <property name="Object" type="object" value="106"/>
    </properties>
   </object>
-  <object id="108" gid="16" x="458.5" y="591.5" width="34" height="52"/>
+  <object id="108" gid="16" x="394.5" y="527.5" width="34" height="52"/>
  </objectgroup>
 </map>
