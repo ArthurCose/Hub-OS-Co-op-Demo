@@ -446,19 +446,25 @@ CoopMission.animate_boss_intro = Async.create_function(function(self)
   Net.set_bot_direction(self.boss_bot_id,
     Direction.reverse(string.upper(self.boss_object.custom_properties["Direction"])))
 
-  local message_promises = {}
+  local intro_message = self.boss_object.custom_properties["Intro Message"]
 
-  for _, id in ipairs(player_ids) do
-    message_promises[#message_promises + 1] = Async.message_player(
-      id,
-      self.boss_object.custom_properties["Intro Message"],
-      self.boss_object.custom_properties["Mug Texture"],
-      self.boss_object.custom_properties["Mug Animation"]
-    )
+  if intro_message then
+    local message_promises = {}
+
+    for _, id in ipairs(player_ids) do
+      message_promises[#message_promises + 1] = Async.message_player(
+        id,
+        self.boss_object.custom_properties["Intro Message"],
+        self.boss_object.custom_properties["Mug Texture"],
+        self.boss_object.custom_properties["Mug Animation"]
+      )
+    end
+
+    -- wait for everyone to read the message before starting the encounter
+    Async.await_all(message_promises)
+  else
+    Async.await(Async.sleep(1))
   end
-
-  -- wait for everyone to read the message before starting the encounter
-  Async.await_all(message_promises)
 
   local battle_promises = Async.initiate_netplay(
     player_ids,

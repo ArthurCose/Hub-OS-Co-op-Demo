@@ -72,12 +72,11 @@
   </object>
   <object id="70" name="Boss" x="176" y="144">
    <properties>
-    <property name="Animation" value="/server/assets/bots/heel-navi.animation"/>
+    <property name="Animation" value="/server/assets/bots/circusman.animation"/>
     <property name="Direction" value="Up Left"/>
-    <property name="Intro Message" value="This data is mine!"/>
     <property name="Mug Animation" value="/server/assets/bots/three_panel_mug.animation"/>
-    <property name="Mug Texture" value="/server/assets/bots/heel-navi-mug.png"/>
-    <property name="Texture" value="/server/assets/bots/heel-navi.png"/>
+    <property name="Mug Texture" value="/server/assets/bots/circusman_mug.png"/>
+    <property name="Texture" value="/server/assets/bots/circusman.png"/>
    </properties>
    <point/>
   </object>

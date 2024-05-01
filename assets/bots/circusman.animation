@@ -1,0 +1,11 @@
+animation state="IDLE_DL"
+frame x="1" y="1" w="53" h="47" originx="24" originy="39" flipx="1"
+
+animation state="IDLE_DR"
+frame x="1" y="1" w="53" h="47" originx="24" originy="39"
+
+animation state="IDLE_UR"
+frame x="55" y="1" w="50" h="50" originx="18" originy="43"
+
+animation state="IDLE_UL"
+frame x="55" y="1" w="50" h="50" originx="18" originy="43" flipx="1"
