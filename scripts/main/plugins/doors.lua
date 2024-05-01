@@ -57,8 +57,8 @@ local animate_state_change = Async.create_function(function(area_id, door, playe
   Async.await(Async.sleep(return_wait_duration))
 
   for _, id in ipairs(player_ids) do
-    local position = Net.get_player_position(id)
-    Net.slide_player_camera(id, position.x, position.y, position.z, slide_duration)
+    local x, y, z = Net.get_player_position_multi(id)
+    Net.slide_player_camera(id, x, y, z, slide_duration)
   end
 
   Async.await(Async.sleep(return_slide_duration))
