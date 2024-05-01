@@ -1,4 +1,4 @@
-local Activity = require("scripts/main/activity")
+local Activity = require("scripts/main/framework/activity")
 local BotPathPlugin = require("scripts/main/plugins/bot_path")
 local LetsGoPlugin = require("scripts/main/plugins/lets_go")
 local SpikeyPlugin = require("scripts/main/plugins/spikey")
@@ -34,22 +34,22 @@ function CoopMission:new(activity, base_area_id)
   local area_id = tostring(Net.system_random())
   Net.clone_area(base_area_id, area_id)
 
-  ---@type CoopMission
-  ---@diagnostic disable-next-line: assign-type-mismatch
-  local mission = Activity.new(self)
-  mission.alive_time = 0
-  mission.area_id = area_id
-  mission.activity = activity
-  mission.bot_path_plugin = BotPathPlugin:new(activity)
-  mission.lets_go_plugin = LetsGoPlugin:new(activity)
-  mission.spikey_plugin = SpikeyPlugin:new(activity)
-  mission.buttons_plugin = ButtonsPlugin:new(activity, area_id)
-  mission.doors_plugin = DoorsPlugin:new(area_id)
-  mission.spawn_points = {}
-  mission.default_encounter_path = Net.get_area_custom_property(area_id, "Default Encounter")
-  mission.boss_buttons_pressed = 0
-  mission.boss_ready_points = {}
-  mission.ampstr_bot_id = nil
+  local mission = {
+    alive_time = 0,
+    area_id = area_id,
+    activity = activity,
+    bot_path_plugin = BotPathPlugin:new(activity),
+    lets_go_plugin = LetsGoPlugin:new(activity),
+    spikey_plugin = SpikeyPlugin:new(activity),
+    buttons_plugin = ButtonsPlugin:new(activity, area_id),
+    doors_plugin = DoorsPlugin:new(area_id),
+    spawn_points = {},
+    default_encounter_path = Net.get_area_custom_property(area_id, "Default Encounter"),
+    boss_buttons_pressed = 0,
+    boss_ready_points = {},
+  }
+  setmetatable(mission, self)
+  self.__index = self
 
   mission:init(activity)
 
@@ -57,6 +57,7 @@ function CoopMission:new(activity, base_area_id)
 end
 
 ---@private
+---@param activity Activity
 function CoopMission:init(activity)
   local ampstr_message
 
@@ -181,9 +182,11 @@ function CoopMission:init(activity)
       self:delete_player(player_id)
     else
       -- trap the player for a bit
+      local position = Net.get_player_position(player_id)
+
       Net.animate_player_properties(player_id, {
         {
-          properties = { { property = "Z", value = self.activity:player(player_id).z } },
+          properties = { { property = "Z", value = position.z } },
           duration = 0.2
         }
       })
@@ -237,7 +240,7 @@ function CoopMission:init(activity)
   end)
 
   -- handle ampstr interaction
-  activity:on("actor_interaction", function(event, player)
+  activity:on("actor_interaction", function(event)
     if event.button ~= 0 or event.actor_id ~= self.ampstr_bot_id then
       return
     end
@@ -249,9 +252,12 @@ function CoopMission:init(activity)
 
     Ampstr.message_player(event.player_id, ampstr_message)
 
-    player:message_with_mug_async(
+    local mug = Net.get_player_mugshot(event.player_id)
+    Async.message_player(
       event.player_id,
-      "I guess this was the data we needed."
+      "I guess this was the data we needed.",
+      mug.texture_path,
+      mug.animation_path
     ).and_then(function()
       -- return to the index
       Net.transfer_server(event.player_id, "hubos.konstinople.dev", true)
@@ -259,8 +265,14 @@ function CoopMission:init(activity)
   end)
 
   -- setup players
-  activity:on("player_join", function(event, player)
-    self:connect(player)
+  activity:on("player_join", function(event)
+    self:connect(event.player_id)
+  end)
+
+  activity:on("player_leave", function()
+    if #activity:player_list() == 0 then
+      activity:destroy()
+    end
   end)
 
   -- cleanup
@@ -277,18 +289,18 @@ function CoopMission:delete_player(player_id)
   Net.transfer_server(player_id, "hubos.konstinople.dev", true)
 end
 
----@param player Player
-function CoopMission:connect(player)
+---@param player_id Net.ActorId
+function CoopMission:connect(player_id)
   local point = table.remove(self.spawn_points, 1)
 
   if not point then
-    Net.kick_player(player.id, "Too many players in mission")
+    Net.kick_player(player_id, "Too many players in mission")
     return
   end
 
   local direction = point.custom_properties.Direction
 
-  Net.transfer_player(player.id, self.area_id, true, point.x, point.y, point.z, direction)
+  Net.transfer_player(player_id, self.area_id, true, point.x, point.y, point.z, direction)
 end
 
 local function calculate_walk_time(tile_distance)
@@ -314,11 +326,7 @@ end
 ---@param self CoopMission
 CoopMission.animate_boss_intro = Async.create_function(function(self)
   -- collect player ids
-  local player_ids = {}
-
-  for _, player in pairs(self.activity:player_list()) do
-    player_ids[#player_ids + 1] = player.id
-  end
+  local player_ids = self.activity:player_list()
 
   -- config
   local slide_duration = 0.25

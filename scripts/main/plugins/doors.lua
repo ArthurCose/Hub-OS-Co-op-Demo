@@ -32,7 +32,7 @@ local close_door = function(area_id, door)
 end
 
 ---@param door DoorsPluginObject
-local animate_state_change = Async.create_function(function(area_id, door, players)
+local animate_state_change = Async.create_function(function(area_id, door, player_ids)
   local slide_duration = 0.5
   local wait_duration = 0.5
   local return_wait_duration = 1
@@ -40,8 +40,8 @@ local animate_state_change = Async.create_function(function(area_id, door, playe
 
   local object = door.object
 
-  for _, player in ipairs(players) do
-    Net.slide_player_camera(player.id, object.x, object.y, object.z, slide_duration)
+  for _, id in ipairs(player_ids) do
+    Net.slide_player_camera(id, object.x, object.y, object.z, slide_duration)
   end
 
   -- delay before opening door
@@ -56,20 +56,20 @@ local animate_state_change = Async.create_function(function(area_id, door, playe
   -- delay before returning the camera
   Async.await(Async.sleep(return_wait_duration))
 
-  for _, player in ipairs(players) do
-    local position = Net.get_player_position(player.id)
-    Net.slide_player_camera(player.id, position.x, position.y, position.z, slide_duration)
+  for _, id in ipairs(player_ids) do
+    local position = Net.get_player_position(id)
+    Net.slide_player_camera(id, position.x, position.y, position.z, slide_duration)
   end
 
   Async.await(Async.sleep(return_slide_duration))
 
-  for _, player in ipairs(players) do
-    Net.unlock_player_camera(player.id)
+  for _, id in ipairs(player_ids) do
+    Net.unlock_player_camera(id)
   end
 end)
 
 ---@param object_id any
----@param animate_list? Player[]
+---@param animate_list? Net.ActorId[]
 function DoorsPlugin:stack_open(object_id, animate_list)
   local door = self.doors[object_id]
 
@@ -93,7 +93,7 @@ function DoorsPlugin:stack_open(object_id, animate_list)
 end
 
 ---@param object_id any
----@param animate_list? Player[]
+---@param animate_list? Net.ActorId[]
 function DoorsPlugin:stack_close(object_id, animate_list)
   local door = self.doors[object_id]
 

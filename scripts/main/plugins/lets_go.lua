@@ -87,28 +87,30 @@ function LetsGoPlugin:init(activity)
       local radius_sqr = radius * radius
 
       -- see if a player is range
-      for _, player in ipairs(activity:player_list()) do
-        if self.caught_players[player.id] then
+      for _, player_id in ipairs(activity:player_list()) do
+        if self.caught_players[player_id] then
           goto continue_players
         end
 
-        local player_diff_x = player.x - position.x
-        local player_diff_y = player.y - position.y
-        local player_diff_z = player.z - position.z
+        local player_position = Net.get_player_position(player_id)
+
+        local player_diff_x = player_position.x - position.x
+        local player_diff_y = player_position.y - position.y
+        local player_diff_z = player_position.z - position.z
         local player_sqr_dist =
             player_diff_x * player_diff_x +
             player_diff_y * player_diff_y +
             player_diff_z * player_diff_z
 
         if player_sqr_dist < radius_sqr then
-          table.insert(bot.caught_players, player.id)
-          self.caught_players[player.id] = true
+          table.insert(bot.caught_players, player_id)
+          self.caught_players[player_id] = true
 
-          Net.lock_player_input(player.id)
+          Net.lock_player_input(player_id)
 
           -- face the bot
-          local direction = Direction.from_points(player, position)
-          Net.animate_player_properties(player.id, { {
+          local direction = Direction.from_points(player_position, position)
+          Net.animate_player_properties(player_id, { {
             properties = { { property = "Direction", value = direction } }
           } })
 
@@ -133,7 +135,7 @@ function LetsGoPlugin:init(activity)
           end
 
           for _, listener in ipairs(self.collision_listeners) do
-            listener(bot.id, player.id)
+            listener(bot.id, player_id)
           end
 
           if not bot.shared then

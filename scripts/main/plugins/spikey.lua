@@ -174,11 +174,12 @@ function SpikeyPlugin:init(activity)
       local test_x = bot.x - bot.vel_x * 2
       local test_y = bot.y - bot.vel_y * 2
 
-      for _, player in ipairs(activity:player_list()) do
-        if not self.ignored_players[player.id] then
-          local player_diff_x = player.x - test_x
-          local player_diff_y = player.y - test_y
-          local player_diff_z = player.z - bot.z
+      for _, player_id in ipairs(activity:player_list()) do
+        if not self.ignored_players[player_id] then
+          local player_position = Net.get_player_position(player_id)
+          local player_diff_x = player_position.x - test_x
+          local player_diff_y = player_position.y - test_y
+          local player_diff_z = player_position.z - bot.z
           local player_sqr_dist =
               player_diff_x * player_diff_x +
               player_diff_y * player_diff_y +
@@ -186,7 +187,7 @@ function SpikeyPlugin:init(activity)
 
           if player_sqr_dist < radius_sqr then
             for _, listener in ipairs(self.collision_listeners) do
-              listener(bot.parent.id, bot.id, player.id)
+              listener(bot.parent.id, bot.id, player_id)
             end
 
             self:remove_fireball(i)

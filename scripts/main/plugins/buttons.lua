@@ -1,6 +1,6 @@
 local Rectangle = require("scripts/libs/rectangle")
 
----@alias ButtonsPluginCallback fun(button: ButtonsPluginObject, player: Player)
+---@alias ButtonsPluginCallback fun(button: ButtonsPluginObject, player_id: Net.ActorId)
 
 ---@class ButtonsPluginObject
 ---@field press_count number
@@ -51,9 +51,9 @@ function ButtonsPlugin:init(activity)
     end
   end)
 
-  activity:on("player_move", function(event, player)
+  activity:on("player_move", function(event)
     -- buttons
-    local player_data = player_data_map[player.id]
+    local player_data = player_data_map[event.player_id]
     local old_button_index = player_data.button_index
     player_data.button_index = nil
 
@@ -63,14 +63,14 @@ function ButtonsPlugin:init(activity)
       end
 
       player_data.button_index = i
-      self:press_button(player, i)
+      self:press_button(event.player_id, i)
 
       break
       ::continue::
     end
 
     if old_button_index then
-      self:release_button(player, old_button_index)
+      self:release_button(event.player_id, old_button_index)
     end
   end)
 end
@@ -92,7 +92,7 @@ function ButtonsPlugin:on_state_change(callback)
 end
 
 ---@private
-function ButtonsPlugin:press_button(player, button_index)
+function ButtonsPlugin:press_button(player_id, button_index)
   local button = self.buttons[button_index]
   button.press_count = button.press_count + 1
 
@@ -110,12 +110,12 @@ function ButtonsPlugin:press_button(player, button_index)
   end
 
   for _, listener in ipairs(self.state_listeners) do
-    listener(button, player)
+    listener(button, player_id)
   end
 end
 
 ---@private
-function ButtonsPlugin:release_button(player, button_index)
+function ButtonsPlugin:release_button(player_id, button_index)
   local button = self.buttons[button_index]
   button.press_count = button.press_count - 1
 
@@ -133,7 +133,7 @@ function ButtonsPlugin:release_button(player, button_index)
   end
 
   for _, listener in ipairs(self.state_listeners) do
-    listener(button, player)
+    listener(button, player_id)
   end
 end
 
