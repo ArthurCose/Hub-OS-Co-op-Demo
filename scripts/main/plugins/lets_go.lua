@@ -1,3 +1,5 @@
+local Direction = require("scripts/libs/direction")
+
 ---@class LetsGoBotOptions
 ---@field bot_id Net.ActorId
 ---@field package_path string
@@ -103,9 +105,19 @@ function LetsGoPlugin:init(activity)
 
           Net.lock_player_input(player.id)
 
+          -- face the bot
+          local direction = Direction.from_points(player, position)
+          Net.animate_player_properties(player.id, { {
+            properties = { { property = "Direction", value = direction } }
+          } })
+
           if not bot.activated then
             bot.activated = true
 
+            -- face the player
+            Net.set_bot_direction(bot.id, Direction.reverse(direction))
+
+            -- resolve delay before starting the encounter
             local delay = 3
 
             if not bot.shared then
@@ -161,6 +173,10 @@ end
 function LetsGoPlugin:start_encounter(bot)
   -- mark the bot as in_encounter prevent catching more players
   bot.in_encounter = true
+
+  for _, player_id in ipairs(bot.caught_players) do
+    Net.set_player_emote(player_id, "")
+  end
 
   -- start encounter
   local promises
