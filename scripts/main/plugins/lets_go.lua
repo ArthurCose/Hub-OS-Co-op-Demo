@@ -201,14 +201,14 @@ function LetsGoPlugin:start_encounter(bot)
 
   for _, promise in ipairs(promises) do
     promise.and_then(function(event)
-      -- wait a bit before allowing encounters for the player again
-      Async.sleep(3).and_then(function()
-        self.caught_players[event.player_id] = nil
-      end)
-
       count = count + 1
 
       if event then
+        -- wait a bit before allowing encounters for the player again
+        Async.sleep(3).and_then(function()
+          self.caught_players[event.player_id] = nil
+        end)
+
         -- unlock input on completion
         Net.unlock_player_input(event.player_id)
 
