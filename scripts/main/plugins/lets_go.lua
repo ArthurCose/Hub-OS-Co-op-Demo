@@ -14,6 +14,7 @@ local Direction = require("scripts/libs/direction")
 ---@field in_encounter? boolean
 ---@field activated? boolean
 ---@field caught_players Net.ActorId[]
+---@field old_direction? string
 
 ---@class LetsGoPlugin
 ---@field private bots LetsGoBot[]
@@ -115,6 +116,7 @@ function LetsGoPlugin:init(activity)
             bot.activated = true
 
             -- face the player
+            bot.old_direction = Net.get_bot_direction(bot.id)
             Net.set_bot_direction(bot.id, Direction.reverse(direction))
 
             -- resolve delay before starting the encounter
@@ -222,6 +224,9 @@ function LetsGoPlugin:start_encounter(bot)
         bot.in_encounter = nil
         bot.activated = nil
         bot.caught_players = {}
+
+        -- revert facing direction
+        Net.set_bot_direction(bot.id, bot.old_direction)
 
         -- call listeners
         for _, listener in ipairs(self.end_listeners) do
