@@ -1,25 +1,25 @@
 ---@class LetsGoBotOptions
----@field bot_id ActorId
+---@field bot_id Net.ActorId
 ---@field package_path string
 ---@field radius? number
 ---@field shared? boolean
 
 ---@class LetsGoBot
----@field id ActorId
+---@field id Net.ActorId
 ---@field package_path string
 ---@field radius? number
 ---@field shared? boolean
 ---@field in_encounter? boolean
 ---@field activated? boolean
----@field caught_players ActorId[]
+---@field caught_players Net.ActorId[]
 
 ---@class LetsGoPlugin
 ---@field private bots LetsGoBot[]
----@field private caught_players table<ActorId, boolean>
----@field private collision_listeners fun(bot_id: ActorId, player_id: ActorId)[]
----@field private results_listeners fun(bot_id: ActorId, event)[]
----@field private start_listeners fun(bot_id: ActorId, players: ActorId[])[]
----@field private end_listeners fun(bot_id: ActorId, players: ActorId[])[]
+---@field private caught_players table<Net.ActorId, boolean>
+---@field private collision_listeners fun(bot_id: Net.ActorId, player_id: Net.ActorId)[]
+---@field private results_listeners fun(bot_id: Net.ActorId, event)[]
+---@field private start_listeners fun(bot_id: Net.ActorId, players: Net.ActorId[])[]
+---@field private end_listeners fun(bot_id: Net.ActorId, players: Net.ActorId[])[]
 local LetsGoPlugin = {}
 
 ---@param activity Activity
@@ -136,22 +136,22 @@ function LetsGoPlugin:init(activity)
   end)
 end
 
----@param callback fun(bot_id: ActorId, player_id: ActorId)
+---@param callback fun(bot_id: Net.ActorId, player_id: Net.ActorId)
 function LetsGoPlugin:on_collision(callback)
   table.insert(self.collision_listeners, callback)
 end
 
----@param callback fun(bot_id: ActorId, event)
+---@param callback fun(bot_id: Net.ActorId, event)
 function LetsGoPlugin:on_results(callback)
   table.insert(self.results_listeners, callback)
 end
 
----@param callback fun(bot_id: ActorId, players: ActorId[])
+---@param callback fun(bot_id: Net.ActorId, players: Net.ActorId[])
 function LetsGoPlugin:on_encounter_start(callback)
   table.insert(self.start_listeners, callback)
 end
 
----@param callback fun(bot_id: ActorId, players: ActorId[])
+---@param callback fun(bot_id: Net.ActorId, players: Net.ActorId[])
 function LetsGoPlugin:on_encounter_end(callback)
   table.insert(self.end_listeners, callback)
 end

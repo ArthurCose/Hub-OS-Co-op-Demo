@@ -4,8 +4,8 @@ local Rectangle = require("scripts/libs/rectangle")
 
 ---@class ButtonsPluginObject
 ---@field press_count number
----@field collision TiledObject
----@field visual? TiledObject
+---@field collision Net.Object
+---@field visual? Net.Object
 
 ---@class ButtonsPluginPlayer
 ---@field button_index number
@@ -75,7 +75,7 @@ function ButtonsPlugin:init(activity)
   end)
 end
 
----@param object TiledObject
+---@param object Net.Object
 function ButtonsPlugin:register_button(object)
   local button = {
     collision = object,

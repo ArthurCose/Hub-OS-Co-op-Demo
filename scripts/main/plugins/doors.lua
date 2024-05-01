@@ -1,5 +1,5 @@
 ---@class DoorsPluginObject
----@field object TiledObject
+---@field object Net.Object
 ---@field open_count number
 
 ---@class DoorsPlugin
@@ -75,7 +75,7 @@ function DoorsPlugin:stack_open(object_id, animate_list)
 
   if not door then
     door = {
-      object = Net.get_object_by_id(self.area_id, object_id) --[[@as TiledObject]],
+      object = Net.get_object_by_id(self.area_id, object_id) --[[@as Net.Object]],
       open_count = 0
     }
     self.doors[object_id] = door
@@ -99,7 +99,7 @@ function DoorsPlugin:stack_close(object_id, animate_list)
 
   if not door then
     door = {
-      object = Net.get_object_by_id(self.area_id, object_id) --[[@as TiledObject]],
+      object = Net.get_object_by_id(self.area_id, object_id) --[[@as Net.Object]],
       open_count = 0
     }
     self.doors[object_id] = door

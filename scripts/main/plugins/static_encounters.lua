@@ -16,7 +16,7 @@ local SURPRISED_EMOTE = "EXCLAMATION MARK!"
 
 ---@class StaticEncountersPlugin
 ---@field private encounters StaticEncounter[]
----@field private caught_players table<ActorId, boolean>
+---@field private caught_players table<Net.ActorId, boolean>
 ---@field private results_listeners fun(event)[]
 local StaticEncountersPlugin = {}
 

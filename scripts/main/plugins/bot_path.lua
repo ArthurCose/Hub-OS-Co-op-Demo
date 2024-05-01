@@ -1,15 +1,15 @@
 local Direction = require("scripts/libs/direction")
 
 ---@class BotPathOptions
----@field bot_id ActorId
----@field path TilePosition[]
+---@field bot_id Net.ActorId
+---@field path Net.Position[]
 ---@field speed? number
 ---@field players_block_movement? boolean
 ---@field radius? number
 
 ---@class BotPathBot
----@field id ActorId
----@field path TilePosition[]
+---@field id Net.ActorId
+---@field path Net.Position[]
 ---@field path_index number
 ---@field x number
 ---@field y number
@@ -21,7 +21,7 @@ local Direction = require("scripts/libs/direction")
 
 ---@class BotPathPlugin
 ---@field private bots BotPathBot[]
----@field private ignored_players table<ActorId, boolean>
+---@field private ignored_players table<Net.ActorId, boolean>
 local BotPathPlugin = {}
 
 ---@param activity Activity

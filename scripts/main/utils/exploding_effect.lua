@@ -75,7 +75,7 @@ end
 ---@class ExplodingEffect
 local ExplodingEffect = {}
 
----@param actor_id ActorId
+---@param actor_id Net.ActorId
 ---@return ExplodingEffect
 function ExplodingEffect:new(actor_id)
   local exploding_effect = {

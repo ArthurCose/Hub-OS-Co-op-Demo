@@ -17,13 +17,13 @@ local SURPRISED_EMOTE = "EXCLAMATION MARK!"
 ---@field bot_path_plugin BotPathPlugin
 ---@field buttons_plugin ButtonsPlugin
 ---@field doors_plugin DoorsPlugin
----@field spawn_points TiledObject[]
+---@field spawn_points Net.Object[]
 ---@field default_encounter_path string
----@field boss_object TiledObject
+---@field boss_object Net.Object
 ---@field boss_bot_id any
----@field boss_door TiledObject
+---@field boss_door Net.Object
 ---@field boss_buttons_pressed number
----@field boss_ready_points TiledObject[]
+---@field boss_ready_points Net.Object[]
 ---@field ampstr_bot_id any
 local CoopMission = {}
 
@@ -60,7 +60,7 @@ function CoopMission:init(activity)
   local object_ids = Net.list_objects(self.area_id)
 
   for _, object_id in ipairs(object_ids) do
-    local object = Net.get_object_by_id(self.area_id, object_id) --[[@as TiledObject]]
+    local object = Net.get_object_by_id(self.area_id, object_id) --[[@as Net.Object]]
 
     if object.name == "Spawn" then
       self.spawn_points[#self.spawn_points + 1] = object
@@ -79,7 +79,7 @@ function CoopMission:init(activity)
       local next_id = tonumber(object.custom_properties["Next"])
 
       while next_id ~= nil and next_id ~= object.id do
-        local next_object = Net.get_object_by_id(self.area_id, next_id) --[[@as TiledObject]]
+        local next_object = Net.get_object_by_id(self.area_id, next_id) --[[@as Net.Object]]
         table.insert(path, next_object)
         next_id = tonumber(next_object.custom_properties["Next"])
       end
