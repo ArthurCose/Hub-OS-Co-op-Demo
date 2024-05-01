@@ -40,8 +40,8 @@ function CoopMission:new(activity, base_area_id)
     bot_path_plugin = BotPathPlugin:new(activity),
     lets_go_plugin = LetsGoPlugin:new(activity),
     spikey_plugin = SpikeyPlugin:new(activity),
-    buttons_plugin = ButtonsPlugin:new(activity, area_id),
-    doors_plugin = DoorsPlugin:new(area_id),
+    buttons_plugin = ButtonsPlugin:new(activity),
+    doors_plugin = DoorsPlugin:new(),
     spawn_points = {},
     default_encounter_path = Net.get_area_custom_property(area_id, "Default Encounter"),
     boss_buttons_pressed = 0,
@@ -131,7 +131,11 @@ function CoopMission:init(activity)
         fire_animation_path = "/server/assets/bots/spikey_fireball.animation"
       })
     elseif object.name == "Button" then
-      self.buttons_plugin:register_button(object)
+      self.buttons_plugin:register_button({
+        area_id = self.area_id,
+        collision = object,
+        visual = Net.get_object_by_id(self.area_id, object.custom_properties.Object),
+      })
     elseif object.name == "Boss Door" then
       self.boss_door = object
     elseif object.name == "Boss Ready" then
@@ -339,7 +343,7 @@ CoopMission.animate_boss_intro = Async.create_function(function(self)
   Async.await(Async.sleep(slide_duration + wait_duration))
 
   -- just move it far away
-  self.doors_plugin:stack_open(self.boss_door.id)
+  self.doors_plugin:stack_open(self.area_id, self.boss_door.id)
 
   -- walk to the boss
   local keyframes
@@ -504,7 +508,7 @@ function CoopMission:press_button(button)
   local door_id = button.collision.custom_properties.Door
 
   if door_id then
-    self.doors_plugin:stack_open(door_id, self.activity:player_list())
+    self.doors_plugin:stack_open(self.area_id, door_id, self.activity:player_list())
   else
     -- default to the boss door
     self.boss_buttons_pressed = self.boss_buttons_pressed + 1
@@ -515,13 +519,13 @@ function CoopMission:press_button(button)
   end
 end
 
----@param button ButtonsPluginObject
+---@param button ButtonsPlugin.Button
 function CoopMission:release_button(button)
   -- update connection
   local door_id = button.collision.custom_properties.Door
 
   if door_id then
-    self.doors_plugin:stack_close(door_id)
+    self.doors_plugin:stack_close(self.area_id, door_id)
   elseif self.boss_buttons_pressed ~= 2 then
     -- default to the boss door
     self.boss_buttons_pressed = self.boss_buttons_pressed - 1

@@ -1,29 +1,28 @@
 local Rectangle = require("scripts/libs/rectangle")
 
----@alias ButtonsPluginCallback fun(button: ButtonsPluginObject, player_id: Net.ActorId)
+---@alias ButtonsPlugin.Callback fun(button: ButtonsPlugin.Button, player_id: Net.ActorId)
 
----@class ButtonsPluginObject
----@field press_count number
+---@class ButtonsPlugin.Options
+---@field area_id string
 ---@field collision Net.Object
 ---@field visual? Net.Object
 
----@class ButtonsPluginPlayer
----@field button_index number
+---@class ButtonsPlugin.Button
+---@field collision Net.Object
+---@field visual? Net.Object
+---@field press_count number
 
 ---@class ButtonsPlugin
----@field area_id string
----@field buttons ButtonsPluginObject[]
----@field state_listeners ButtonsPluginCallback[]
+---@field private _area_buttons table<string, ButtonsPlugin.Button[]>
+---@field private _state_listeners ButtonsPlugin.Callback[]
 local ButtonsPlugin = {}
 
 ---@param activity Activity
----@param area_id string
 ---@return ButtonsPlugin
-function ButtonsPlugin:new(activity, area_id)
+function ButtonsPlugin:new(activity)
   local plugin = {
-    area_id = area_id,
-    buttons = {},
-    state_listeners = {}
+    _area_buttons = {},
+    _state_listeners = {}
   }
   setmetatable(plugin, self)
   self.__index = self
@@ -36,64 +35,70 @@ end
 ---@private
 ---@param activity Activity
 function ButtonsPlugin:init(activity)
-  local player_data_map = {}
-
-  activity:on("player_join", function(event)
-    player_data_map[event.player_id] = {}
-  end)
+  local player_presses = {}
 
   activity:on("player_leave", function(event)
-    local player_data = player_data_map[event.player_id]
-    player_data_map[event.player_id] = nil
+    local button_index = player_presses[event.player_id]
+    player_presses[event.player_id] = nil
 
-    if player_data.button_index then
-      self:release_button(player_data.button_index)
+    if button_index then
+      self:release_button(button_index)
     end
   end)
 
   activity:on("player_move", function(event)
-    -- buttons
-    local player_data = player_data_map[event.player_id]
-    local old_button_index = player_data.button_index
-    player_data.button_index = nil
+    local area_id = activity:player_area(event.player_id)
+    local old_button_index = player_presses[event.player_id]
+    player_presses[event.player_id] = nil
 
-    for i, button in ipairs(self.buttons) do
-      if button.collision.z ~= event.z or not Rectangle.contains_point(button.collision, event) then
-        goto continue
+    local buttons = self._area_buttons[area_id]
+
+    if buttons then
+      for i, button in ipairs(buttons) do
+        if button.collision.z ~= event.z or not Rectangle.contains_point(button.collision, event) then
+          goto continue
+        end
+
+        player_presses[event.player_id] = i
+        self:press_button(event.player_id, area_id, i)
+
+        break
+        ::continue::
       end
-
-      player_data.button_index = i
-      self:press_button(event.player_id, i)
-
-      break
-      ::continue::
     end
 
     if old_button_index then
-      self:release_button(event.player_id, old_button_index)
+      self:release_button(event.player_id, area_id, old_button_index)
     end
   end)
 end
 
----@param object Net.Object
-function ButtonsPlugin:register_button(object)
+---@param options ButtonsPlugin.Options
+function ButtonsPlugin:register_button(options)
   local button = {
-    collision = object,
+    collision = options.collision,
+    visual = options.visual,
     press_count = 0,
-    visual = Net.get_object_by_id(self.area_id, object.custom_properties.Object)
   }
 
-  self.buttons[#self.buttons + 1] = button
+  local buttons = self._area_buttons[options.area_id]
+
+  if not buttons then
+    buttons = {}
+    self._area_buttons[options.area_id] = buttons
+  end
+
+  table.insert(buttons, button)
 end
 
----@param callback ButtonsPluginCallback
+---@param callback ButtonsPlugin.Callback
 function ButtonsPlugin:on_state_change(callback)
-  table.insert(self.state_listeners, callback)
+  table.insert(self._state_listeners, callback)
 end
 
 ---@private
-function ButtonsPlugin:press_button(player_id, button_index)
-  local button = self.buttons[button_index]
+function ButtonsPlugin:press_button(player_id, area_id, button_index)
+  local button = self._area_buttons[area_id][button_index]
   button.press_count = button.press_count + 1
 
   if button.press_count ~= 1 then
@@ -106,17 +111,17 @@ function ButtonsPlugin:press_button(player_id, button_index)
 
   if visual then
     visual.data.gid = visual.data.gid + 1
-    Net.set_object_data(self.area_id, visual.id, visual.data)
+    Net.set_object_data(area_id, visual.id, visual.data)
   end
 
-  for _, listener in ipairs(self.state_listeners) do
+  for _, listener in ipairs(self._state_listeners) do
     listener(button, player_id)
   end
 end
 
 ---@private
-function ButtonsPlugin:release_button(player_id, button_index)
-  local button = self.buttons[button_index]
+function ButtonsPlugin:release_button(player_id, area_id, button_index)
+  local button = self._area_buttons[area_id][button_index]
   button.press_count = button.press_count - 1
 
   if button.press_count ~= 0 then
@@ -129,10 +134,10 @@ function ButtonsPlugin:release_button(player_id, button_index)
 
   if visual then
     visual.data.gid = visual.data.gid - 1
-    Net.set_object_data(self.area_id, visual.id, visual.data)
+    Net.set_object_data(area_id, visual.id, visual.data)
   end
 
-  for _, listener in ipairs(self.state_listeners) do
+  for _, listener in ipairs(self._state_listeners) do
     listener(button, player_id)
   end
 end

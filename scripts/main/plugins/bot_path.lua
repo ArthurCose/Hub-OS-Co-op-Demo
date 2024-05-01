@@ -1,14 +1,15 @@
 local Direction = require("scripts/libs/direction")
 
----@class BotPathOptions
+---@class BotPathPlugin.BotOptions
 ---@field bot_id Net.ActorId
 ---@field path Net.Position[]
 ---@field speed? number
 ---@field players_block_movement? boolean
 ---@field radius? number
 
----@class BotPathBot
+---@class BotPathPlugin.Bot
 ---@field id Net.ActorId
+---@field area_id string
 ---@field path Net.Position[]
 ---@field path_index number
 ---@field x number
@@ -20,16 +21,16 @@ local Direction = require("scripts/libs/direction")
 ---@field radius? number
 
 ---@class BotPathPlugin
----@field private bots BotPathBot[]
----@field private ignored_players table<Net.ActorId, boolean>
+---@field private _bots BotPathPlugin.Bot[]
+---@field private _ignored_players table<Net.ActorId, boolean>
 local BotPathPlugin = {}
 
 ---@param activity Activity
 ---@return BotPathPlugin
 function BotPathPlugin:new(activity)
   local plugin = {
-    bots = {},
-    ignored_players = {}
+    _bots = {},
+    _ignored_players = {}
   }
   setmetatable(plugin, self)
   self.__index = self
@@ -39,13 +40,14 @@ function BotPathPlugin:new(activity)
   return plugin
 end
 
----@param options BotPathOptions
+---@param options BotPathPlugin.BotOptions
 function BotPathPlugin:register_bot(options)
   local x, y, z = Net.get_bot_position_multi(options.bot_id)
 
-  ---@type BotPathBot
+  ---@type BotPathPlugin.Bot
   local bot = {
     id = options.bot_id,
+    area_id = Net.get_bot_area(options.bot_id),
     path = options.path,
     path_index = 2,
     x = x,
@@ -62,19 +64,19 @@ function BotPathPlugin:register_bot(options)
     bot.radius = options.radius
   end
 
-  table.insert(self.bots, bot)
+  table.insert(self._bots, bot)
 end
 
 function BotPathPlugin:ignore_player(player_id)
-  self.ignored_players[player_id] = true
+  self._ignored_players[player_id] = true
 end
 
 function BotPathPlugin:unignore_player(player_id)
-  self.ignored_players[player_id] = nil
+  self._ignored_players[player_id] = nil
 end
 
 function BotPathPlugin:enable_bot(bot_id)
-  for _, bot in ipairs(self.bots) do
+  for _, bot in ipairs(self._bots) do
     if bot.id == bot_id then
       bot.disabled = nil
       break
@@ -83,7 +85,7 @@ function BotPathPlugin:enable_bot(bot_id)
 end
 
 function BotPathPlugin:disable_bot(bot_id)
-  for _, bot in ipairs(self.bots) do
+  for _, bot in ipairs(self._bots) do
     if bot.id == bot_id then
       bot.disabled = true
       break
@@ -92,9 +94,9 @@ function BotPathPlugin:disable_bot(bot_id)
 end
 
 function BotPathPlugin:remove_bot(bot_id)
-  for i, bot in ipairs(self.bots) do
+  for i, bot in ipairs(self._bots) do
     if bot.id == bot_id then
-      table.remove(self.bots, i)
+      table.remove(self._bots, i)
       break
     end
   end
@@ -104,7 +106,7 @@ end
 ---@param activity Activity
 function BotPathPlugin:init(activity)
   activity:on("tick", function()
-    for _, bot in ipairs(self.bots) do
+    for _, bot in ipairs(self._bots) do
       if bot.disabled then
         goto continue
       end
@@ -114,8 +116,8 @@ function BotPathPlugin:init(activity)
         local radius_sqr = radius * radius
 
         -- see if a player is in the way
-        for _, player_id in ipairs(activity:player_list()) do
-          if not self.ignored_players[player_id] then
+        for _, player_id in ipairs(activity:players_in_area(bot.area_id)) do
+          if not self._ignored_players[player_id] then
             local player_x, player_y, player_z = Net.get_player_position_multi(player_id)
             local player_diff_x = player_x - bot.x
             local player_diff_y = player_y - bot.y

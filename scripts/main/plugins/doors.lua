@@ -1,18 +1,16 @@
 ---@class DoorsPluginObject
+---@field area_id string
 ---@field object Net.Object
 ---@field open_count number
 
 ---@class DoorsPlugin
----@field private area_id string
----@field private doors table<any, DoorsPluginObject>
+---@field private _area_doors table<string, table<any, DoorsPluginObject>>
 local DoorsPlugin = {}
 
----@param area_id string
 ---@return DoorsPlugin
-function DoorsPlugin:new(area_id)
+function DoorsPlugin:new()
   local plugin = {
-    area_id = area_id,
-    doors = {}
+    _area_doors = {}
   }
   setmetatable(plugin, self)
   self.__index = self
@@ -68,50 +66,59 @@ local animate_state_change = Async.create_function(function(area_id, door, playe
   end
 end)
 
----@param object_id any
----@param animate_list? Net.ActorId[]
-function DoorsPlugin:stack_open(object_id, animate_list)
-  local door = self.doors[object_id]
+---@private
+function DoorsPlugin:_ensure_door(area_id, object_id)
+  local doors = self._area_doors[area_id]
+
+  if not doors then
+    doors = {}
+    self._area_doors[area_id] = doors
+  end
+
+  local door = doors[object_id]
 
   if not door then
     door = {
-      object = Net.get_object_by_id(self.area_id, object_id) --[[@as Net.Object]],
+      area_id = area_id,
+      object = Net.get_object_by_id(area_id, object_id) --[[@as Net.Object]],
       open_count = 0
     }
-    self.doors[object_id] = door
+    doors[object_id] = door
   end
+
+  return door
+end
+
+---@param area_id string
+---@param object_id number|string
+---@param animate_list? Net.ActorId[]
+function DoorsPlugin:stack_open(area_id, object_id, animate_list)
+  local door = self:_ensure_door(area_id, object_id)
 
   door.open_count = door.open_count + 1
 
   if door.open_count == 1 then
     if animate_list then
-      animate_state_change(self.area_id, door, animate_list)
+      animate_state_change(area_id, door, animate_list)
     else
-      open_door(self.area_id, door)
+      open_door(area_id, door)
     end
   end
 end
 
----@param object_id any
+---@param area_id string
+---@param object_id number|string
 ---@param animate_list? Net.ActorId[]
-function DoorsPlugin:stack_close(object_id, animate_list)
-  local door = self.doors[object_id]
-
-  if not door then
-    door = {
-      object = Net.get_object_by_id(self.area_id, object_id) --[[@as Net.Object]],
-      open_count = 0
-    }
-    self.doors[object_id] = door
-  end
+function DoorsPlugin:stack_close(area_id, object_id, animate_list)
+  local door = self:_ensure_door(area_id, object_id)
 
   door.open_count = door.open_count - 1
 
   if door.open_count == 0 then
     if animate_list then
-      animate_state_change(self.area_id, door, animate_list)
+      animate_state_change(area_id, door, animate_list)
     else
-      close_door(self.area_id, door)
+      close_door(area_id, door)
     end
   end
 end

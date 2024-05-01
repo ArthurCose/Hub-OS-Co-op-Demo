@@ -1,13 +1,14 @@
 local Direction = require("scripts/libs/direction")
 
----@class LetsGoBotOptions
+---@class LetsGoPlugin.BotOptions
 ---@field bot_id Net.ActorId
 ---@field package_path string
 ---@field radius? number
 ---@field shared? boolean
 
----@class LetsGoBot
+---@class LetsGoPlugin.Bot
 ---@field id Net.ActorId
+---@field area_id string
 ---@field package_path string
 ---@field radius? number
 ---@field shared? boolean
@@ -17,24 +18,24 @@ local Direction = require("scripts/libs/direction")
 ---@field old_direction? string
 
 ---@class LetsGoPlugin
----@field private bots LetsGoBot[]
----@field private caught_players table<Net.ActorId, boolean>
----@field private collision_listeners fun(bot_id: Net.ActorId, player_id: Net.ActorId)[]
----@field private results_listeners fun(bot_id: Net.ActorId, event)[]
----@field private start_listeners fun(bot_id: Net.ActorId, players: Net.ActorId[])[]
----@field private end_listeners fun(bot_id: Net.ActorId, players: Net.ActorId[])[]
+---@field private _bots LetsGoPlugin.Bot[]
+---@field private _caught_players table<Net.ActorId, boolean>
+---@field private _collision_listeners fun(bot_id: Net.ActorId, player_id: Net.ActorId)[]
+---@field private _results_listeners fun(bot_id: Net.ActorId, event)[]
+---@field private _start_listeners fun(bot_id: Net.ActorId, players: Net.ActorId[])[]
+---@field private _end_listeners fun(bot_id: Net.ActorId, players: Net.ActorId[])[]
 local LetsGoPlugin = {}
 
 ---@param activity Activity
 ---@return LetsGoPlugin
 function LetsGoPlugin:new(activity)
   local plugin = {
-    bots = {},
-    caught_players = {},
-    collision_listeners = {},
-    results_listeners = {},
-    start_listeners = {},
-    end_listeners = {},
+    _bots = {},
+    _caught_players = {},
+    _collision_listeners = {},
+    _results_listeners = {},
+    _start_listeners = {},
+    _end_listeners = {},
   }
   setmetatable(plugin, self)
   self.__index = self
@@ -44,11 +45,12 @@ function LetsGoPlugin:new(activity)
   return plugin
 end
 
----@param options LetsGoBotOptions
+---@param options LetsGoPlugin.BotOptions
 function LetsGoPlugin:register_bot(options)
-  ---@type LetsGoBot
+  ---@type LetsGoPlugin.Bot
   local bot = {
     id = options.bot_id,
+    area_id = Net.get_bot_area(options.bot_id),
     package_path = options.package_path,
     caught_players = {}
   }
@@ -61,13 +63,13 @@ function LetsGoPlugin:register_bot(options)
     bot.shared = options.shared
   end
 
-  table.insert(self.bots, bot)
+  table.insert(self._bots, bot)
 end
 
 function LetsGoPlugin:remove_bot(bot_id)
-  for i, bot in ipairs(self.bots) do
+  for i, bot in ipairs(self._bots) do
     if bot.id == bot_id then
-      table.remove(self.bots, i)
+      table.remove(self._bots, i)
       break
     end
   end
@@ -77,7 +79,7 @@ end
 ---@param activity Activity
 function LetsGoPlugin:init(activity)
   activity:on("tick", function()
-    for _, bot in ipairs(self.bots) do
+    for _, bot in ipairs(self._bots) do
       if bot.in_encounter then
         goto continue_bots
       end
@@ -87,8 +89,8 @@ function LetsGoPlugin:init(activity)
       local radius_sqr = radius * radius
 
       -- see if a player is range
-      for _, player_id in ipairs(activity:player_list()) do
-        if self.caught_players[player_id] then
+      for _, player_id in ipairs(activity:players_in_area(bot.area_id)) do
+        if self._caught_players[player_id] then
           goto continue_players
         end
 
@@ -104,7 +106,7 @@ function LetsGoPlugin:init(activity)
 
         if player_sqr_dist < radius_sqr then
           table.insert(bot.caught_players, player_id)
-          self.caught_players[player_id] = true
+          self._caught_players[player_id] = true
 
           Net.lock_player_input(player_id)
 
@@ -138,7 +140,7 @@ function LetsGoPlugin:init(activity)
             end)
           end
 
-          for _, listener in ipairs(self.collision_listeners) do
+          for _, listener in ipairs(self._collision_listeners) do
             listener(bot.id, player_id)
           end
 
@@ -158,26 +160,26 @@ end
 
 ---@param callback fun(bot_id: Net.ActorId, player_id: Net.ActorId)
 function LetsGoPlugin:on_collision(callback)
-  table.insert(self.collision_listeners, callback)
+  table.insert(self._collision_listeners, callback)
 end
 
 ---@param callback fun(bot_id: Net.ActorId, event)
 function LetsGoPlugin:on_results(callback)
-  table.insert(self.results_listeners, callback)
+  table.insert(self._results_listeners, callback)
 end
 
 ---@param callback fun(bot_id: Net.ActorId, players: Net.ActorId[])
 function LetsGoPlugin:on_encounter_start(callback)
-  table.insert(self.start_listeners, callback)
+  table.insert(self._start_listeners, callback)
 end
 
 ---@param callback fun(bot_id: Net.ActorId, players: Net.ActorId[])
 function LetsGoPlugin:on_encounter_end(callback)
-  table.insert(self.end_listeners, callback)
+  table.insert(self._end_listeners, callback)
 end
 
 ---@private
----@param bot LetsGoBot
+---@param bot LetsGoPlugin.Bot
 function LetsGoPlugin:start_encounter(bot)
   -- mark the bot as in_encounter prevent catching more players
   bot.in_encounter = true
@@ -214,14 +216,14 @@ function LetsGoPlugin:start_encounter(bot)
       if event then
         -- wait a bit before allowing encounters for the player again
         Async.sleep(3).and_then(function()
-          self.caught_players[event.player_id] = nil
+          self._caught_players[event.player_id] = nil
         end)
 
         -- unlock input on completion
         Net.unlock_player_input(event.player_id)
 
         -- call listeners
-        for _, listener in ipairs(self.results_listeners) do
+        for _, listener in ipairs(self._results_listeners) do
           listener(bot.id, event)
         end
       end
@@ -235,7 +237,7 @@ function LetsGoPlugin:start_encounter(bot)
         Net.set_bot_direction(bot.id, bot.old_direction)
 
         -- call listeners
-        for _, listener in ipairs(self.end_listeners) do
+        for _, listener in ipairs(self._end_listeners) do
           listener(bot.id, bot.caught_players)
         end
       end
@@ -243,7 +245,7 @@ function LetsGoPlugin:start_encounter(bot)
   end
 
   -- call listeners
-  for _, listener in ipairs(self.start_listeners) do
+  for _, listener in ipairs(self._start_listeners) do
     listener(bot.id, bot.caught_players)
   end
 end
