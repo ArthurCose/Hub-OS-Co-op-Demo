@@ -1,4 +1,3 @@
-local Activity = require("scripts/main/framework/activity")
 local BotPathPlugin = require("scripts/main/plugins/bot_path")
 local LetsGoPlugin = require("scripts/main/plugins/lets_go")
 local SpikeyPlugin = require("scripts/main/plugins/spikey")
