@@ -28,8 +28,10 @@ local function explode(self, explosion_bot_id)
 
   update_tracked_position(self)
 
-  local offset_x = (math.random() * 2 - 1) * EXPLOSION_AXIS_RANGE
-  local offset_y = (math.random() * 2 - 1) * EXPLOSION_AXIS_RANGE
+  local radius = self.radius or EXPLOSION_AXIS_RANGE
+
+  local offset_x = (math.random() * 2 - 1) * radius
+  local offset_y = (math.random() * 2 - 1) * radius
 
   Net.transfer_bot(
     explosion_bot_id,
@@ -80,6 +82,7 @@ end
 
 ---@class ExplodingEffectOptions
 ---@field limit? number
+---@field radius? number
 
 ---@class ExplodingEffect
 local ExplodingEffect = {}
@@ -96,8 +99,14 @@ function ExplodingEffect:new(actor_id, options)
     done = false
   }
 
-  if options and options.limit then
-    effect.limit = options.limit
+  if options then
+    if options.limit then
+      effect.limit = options.limit
+    end
+
+    if options.radius then
+      effect.radius = options.radius
+    end
   end
 
   setmetatable(effect, self)
