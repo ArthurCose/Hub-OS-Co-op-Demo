@@ -41,16 +41,16 @@ end
 
 ---@param options BotPathOptions
 function BotPathPlugin:register_bot(options)
-  local position = Net.get_bot_position(options.bot_id)
+  local x, y, z = Net.get_bot_position_multi(options.bot_id)
 
   ---@type BotPathBot
   local bot = {
     id = options.bot_id,
     path = options.path,
     path_index = 2,
-    x = position.x,
-    y = position.y,
-    z = position.z,
+    x = x,
+    y = y,
+    z = z,
     speed = options.speed,
   }
 
@@ -114,11 +114,12 @@ function BotPathPlugin:init(activity)
         local radius_sqr = radius * radius
 
         -- see if a player is in the way
-        for _, player in ipairs(activity:player_list()) do
-          if not self.ignored_players[player.id] then
-            local player_diff_x = player.x - bot.x
-            local player_diff_y = player.y - bot.y
-            local player_diff_z = player.z - bot.z
+        for _, player_id in ipairs(activity:player_list()) do
+          if not self.ignored_players[player_id] then
+            local player_x, player_y, player_z = Net.get_player_position_multi(player_id)
+            local player_diff_x = player_x - bot.x
+            local player_diff_y = player_y - bot.y
+            local player_diff_z = player_z - bot.z
             local player_sqr_dist =
                 player_diff_x * player_diff_x +
                 player_diff_y * player_diff_y +

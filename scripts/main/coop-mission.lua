@@ -182,11 +182,11 @@ function CoopMission:init(activity)
       self:delete_player(player_id)
     else
       -- trap the player for a bit
-      local position = Net.get_player_position(player_id)
+      local _, _, z = Net.get_player_position_multi(player_id)
 
       Net.animate_player_properties(player_id, {
         {
-          properties = { { property = "Z", value = position.z } },
+          properties = { { property = "Z", value = z } },
           duration = 0.2
         }
       })

@@ -82,7 +82,7 @@ function LetsGoPlugin:init(activity)
         goto continue_bots
       end
 
-      local position = Net.get_bot_position(bot.id)
+      local bot_x, bot_y, bot_z = Net.get_bot_position_multi(bot.id)
       local radius = bot.radius or 0.3
       local radius_sqr = radius * radius
 
@@ -92,11 +92,11 @@ function LetsGoPlugin:init(activity)
           goto continue_players
         end
 
-        local player_position = Net.get_player_position(player_id)
+        local player_x, player_y, player_z = Net.get_player_position_multi(player_id)
 
-        local player_diff_x = player_position.x - position.x
-        local player_diff_y = player_position.y - position.y
-        local player_diff_z = player_position.z - position.z
+        local player_diff_x = player_x - bot_x
+        local player_diff_y = player_y - bot_y
+        local player_diff_z = player_z - bot_z
         local player_sqr_dist =
             player_diff_x * player_diff_x +
             player_diff_y * player_diff_y +
@@ -109,7 +109,11 @@ function LetsGoPlugin:init(activity)
           Net.lock_player_input(player_id)
 
           -- face the bot
-          local direction = Direction.from_points(player_position, position)
+          local direction = Direction.from_points(
+            Net.get_player_position(player_id),
+            Net.get_bot_position(bot.id)
+          )
+
           Net.animate_player_properties(player_id, { {
             properties = { { property = "Direction", value = direction } }
           } })

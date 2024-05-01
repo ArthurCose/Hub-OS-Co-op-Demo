@@ -128,21 +128,21 @@ function SpikeyPlugin:init(activity)
         -- create fireball
 
         local area_id = Net.get_bot_area(bot.id)
-        local position = Net.get_bot_position(bot.id)
+        local x, y, z = Net.get_bot_position_multi(bot.id)
         local direction = Net.get_bot_direction(bot.id)
         local vec_x, vec_y = Direction.unit_vector_multi(direction)
 
-        position.x = position.x + vec_x * 0.5
-        position.y = position.y + vec_y * 0.5
+        x = x + vec_x * 0.5
+        y = y + vec_y * 0.5
 
         local fireball_id = Net.create_bot({
           area_id = area_id,
           texture_path = bot.fire_texture,
           animation_path = bot.fire_animation,
           warp_in = false,
-          x = position.x,
-          y = position.y,
-          z = position.z,
+          x = x,
+          y = y,
+          z = z,
           direction = direction,
         })
 
@@ -150,9 +150,9 @@ function SpikeyPlugin:init(activity)
         local fireball_bot = {
           id = fireball_id,
           parent = bot,
-          x = position.x,
-          y = position.y,
-          z = position.z,
+          x = x,
+          y = y,
+          z = z,
           vel_x = vec_x * bot.fire_speed,
           vel_y = vec_y * bot.fire_speed,
           dist = 0,
@@ -176,10 +176,10 @@ function SpikeyPlugin:init(activity)
 
       for _, player_id in ipairs(activity:player_list()) do
         if not self.ignored_players[player_id] then
-          local player_position = Net.get_player_position(player_id)
-          local player_diff_x = player_position.x - test_x
-          local player_diff_y = player_position.y - test_y
-          local player_diff_z = player_position.z - bot.z
+          local player_x, player_y, player_z = Net.get_player_position_multi(player_id)
+          local player_diff_x = player_x - test_x
+          local player_diff_y = player_y - test_y
+          local player_diff_z = player_z - bot.z
           local player_sqr_dist =
               player_diff_x * player_diff_x +
               player_diff_y * player_diff_y +
