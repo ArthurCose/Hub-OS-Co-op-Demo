@@ -63,7 +63,7 @@ function CoopMission:init(activity)
   local object_ids = Net.list_objects(self.area_id)
 
   for _, object_id in ipairs(object_ids) do
-    local object = Net.get_object_by_id(self.area_id, object_id) --[[@as Net.Object]]
+    local object = Net.get_object_by_id(self.area_id, object_id)
 
     if object.name == "Spawn" then
       self.spawn_points[#self.spawn_points + 1] = object
@@ -83,7 +83,7 @@ function CoopMission:init(activity)
       local next_id = tonumber(object.custom_properties["Next"])
 
       while next_id ~= nil and next_id ~= object.id do
-        local next_object = Net.get_object_by_id(self.area_id, next_id) --[[@as Net.Object]]
+        local next_object = Net.get_object_by_id(self.area_id, next_id)
         table.insert(path, next_object)
         next_id = tonumber(next_object.custom_properties["Next"])
       end

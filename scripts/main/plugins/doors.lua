@@ -80,7 +80,7 @@ function DoorsPlugin:_ensure_door(area_id, object_id)
   if not door then
     door = {
       area_id = area_id,
-      object = Net.get_object_by_id(area_id, object_id) --[[@as Net.Object]],
+      object = Net.get_object_by_id(area_id, object_id),
       open_count = 0
     }
     doors[object_id] = door
