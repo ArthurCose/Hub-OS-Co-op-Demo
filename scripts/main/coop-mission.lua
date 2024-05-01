@@ -1,6 +1,7 @@
 local Activity = require("scripts/main/activity")
 local BotPathPlugin = require("scripts/main/plugins/bot_path")
 local LetsGoPlugin = require("scripts/main/plugins/lets_go")
+local SpikeyPlugin = require("scripts/main/plugins/spikey")
 local ButtonsPlugin = require("scripts/main/plugins/buttons")
 local DoorsPlugin = require("scripts/main/plugins/doors")
 local ExplodingEffect = require("scripts/main/utils/exploding_effect")
@@ -13,8 +14,9 @@ local SURPRISED_EMOTE = "EXCLAMATION MARK!"
 ---@field alive_time number
 ---@field area_id any
 ---@field activity Activity
----@field lets_go_plugin LetsGoPlugin
 ---@field bot_path_plugin BotPathPlugin
+---@field lets_go_plugin LetsGoPlugin
+---@field spikey_plugin SpikeyPlugin
 ---@field buttons_plugin ButtonsPlugin
 ---@field doors_plugin DoorsPlugin
 ---@field spawn_points Net.Object[]
@@ -40,6 +42,7 @@ function CoopMission:new(activity, base_area_id)
   mission.activity = activity
   mission.bot_path_plugin = BotPathPlugin:new(activity)
   mission.lets_go_plugin = LetsGoPlugin:new(activity)
+  mission.spikey_plugin = SpikeyPlugin:new(activity)
   mission.buttons_plugin = ButtonsPlugin:new(activity, area_id)
   mission.doors_plugin = DoorsPlugin:new(area_id)
   mission.spawn_points = {}
@@ -68,6 +71,7 @@ function CoopMission:init(activity)
       local bot_id = Net.create_bot({
         area_id = self.area_id,
         solid = false,
+        warp_in = false,
         texture_path = object.custom_properties["Texture"],
         animation_path = object.custom_properties["Animation"],
         x = object.x,
@@ -95,6 +99,36 @@ function CoopMission:init(activity)
         bot_id = bot_id,
         path = path,
         speed = tonumber(object.custom_properties["Speed"]),
+      })
+    elseif object.name == "Spikey" then
+      local bot_id = Net.create_bot({
+        area_id = self.area_id,
+        solid = false,
+        warp_in = false,
+        texture_path = object.custom_properties["Texture"],
+        animation_path = object.custom_properties["Animation"],
+        x = object.x,
+        y = object.y,
+        z = object.z,
+        direction = object.custom_properties["Direction"],
+      })
+
+      self.lets_go_plugin:register_bot({
+        bot_id = bot_id,
+        package_path = self.default_encounter_path,
+        radius = 0.6,
+        shared = true
+      })
+
+      self.spikey_plugin:register_bot({
+        bot_id = bot_id,
+        fire_interval = 1.2,
+        fire_offset = tonumber(object.custom_properties["Fire Offset"]),
+        fire_speed = 4 / 16,
+        fire_radius = 0.5,
+        fire_distance_limit = 4.5,
+        fire_texture_path = "/server/assets/bots/spikey_fireball.png",
+        fire_animation_path = "/server/assets/bots/spikey_fireball.animation"
       })
     elseif object.name == "Button" then
       self.buttons_plugin:register_button(object)
@@ -133,16 +167,42 @@ function CoopMission:init(activity)
     end
   end
 
-  -- pause movements when viruses are in an encounter
+  -- deal fireball damage
+  self.spikey_plugin:on_fireball_collision(function(_, fireball_id, player_id)
+    ExplodingEffect:new(fireball_id, { radius = 0, limit = 1 })
+
+    local health = Net.get_player_health(player_id)
+
+    health = math.max(health - 150, 0)
+
+    Net.set_player_health(player_id, health)
+
+    if health == 0 then
+      self:delete_player(player_id)
+    else
+      -- trap the player for a bit
+      Net.animate_player_properties(player_id, {
+        {
+          properties = { { property = "Z", value = self.activity:player(player_id).z } },
+          duration = 0.2
+        }
+      })
+    end
+  end)
+
+  -- pause attacks and movements when viruses are in an encounter
   self.lets_go_plugin:on_collision(function(bot_id, player_id)
     self.bot_path_plugin:disable_bot(bot_id)
+    self.spikey_plugin:disable_bot(bot_id)
     Net.set_player_emote(player_id, SURPRISED_EMOTE)
   end)
 
   self.lets_go_plugin:on_encounter_end(function(bot_id)
     self.bot_path_plugin:enable_bot(bot_id)
+    self.spikey_plugin:enable_bot(bot_id)
   end)
 
+  -- handle encounter results
   self.lets_go_plugin:on_results(function(bot_id, event)
     -- update health + emotion
     Net.set_player_health(event.player_id, event.health)
@@ -150,11 +210,12 @@ function CoopMission:init(activity)
 
     if event.health == 0 then
       -- deleted, kick out to the index
-      Net.transfer_player(event.player_id, "hubos.konstinople.dev", true)
+      self:delete_player(event.player_id)
     elseif not event.ran then
       -- victory
       self.bot_path_plugin:remove_bot(bot_id)
       self.lets_go_plugin:remove_bot(bot_id)
+      self.spikey_plugin:remove_bot(bot_id)
 
       -- explode + delete after 3s
       local effect = ExplodingEffect:new(bot_id)
@@ -210,6 +271,10 @@ function CoopMission:init(activity)
 
     Net.remove_area(self.area_id)
   end)
+end
+
+function CoopMission:delete_player(player_id)
+  Net.transfer_server(player_id, "hubos.konstinople.dev", true)
 end
 
 ---@param player Player

@@ -54,6 +54,13 @@ Net:on_any(function(event_name, event)
     return
   end
 
+  if event_name == "player_join" then
+    local position = Net.get_player_position(player.id)
+    player.x = position.x
+    player.y = position.y
+    player.z = position.z
+  end
+
   player.activity:emit(event_name, event, player)
 
   if event_name == "player_move" then

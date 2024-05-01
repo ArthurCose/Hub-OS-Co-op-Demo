@@ -1,0 +1,19 @@
+animation state="IDLE_UL"
+frame duration="4f" w="48" h="32" originx="24" originy="32" flipx="1"
+frame duration="4f" x="48" w="48" h="32" originx="24" originy="32" flipx="1"
+frame duration="4f" x="96" w="48" h="32" originx="24" originy="32" flipx="1"
+
+animation state="IDLE_UR"
+frame duration="4f" w="48" h="32" originx="24" originy="32"
+frame duration="4f" x="48" w="48" h="32" originx="24" originy="32"
+frame duration="4f" x="96" w="48" h="32" originx="24" originy="32"
+
+animation state="IDLE_DL"
+frame duration="4f" w="48" h="32" originx="24" originy="0" flipx="1" flipy="1"
+frame duration="4f" x="48" w="48" h="32" originx="24" originy="0" flipx="1" flipy="1"
+frame duration="4f" x="96" w="48" h="32" originx="24" originy="0" flipx="1" flipy="1"
+
+animation state="IDLE_DR"
+frame duration="4f" w="48" h="32" originx="24" originy="0" flipy="1"
+frame duration="4f" x="48" w="48" h="32" originx="24" originy="0" flipy="1"
+frame duration="4f" x="96" w="48" h="32" originx="24" originy="0" flipy="1"
