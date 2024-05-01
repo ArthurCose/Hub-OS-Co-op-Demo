@@ -159,7 +159,7 @@ function CoopMission:init(activity)
       -- explode + delete after 3s
       local effect = ExplodingEffect:new(bot_id)
 
-      Async.sleep(3).and_then(function()
+      Async.sleep(0.7).and_then(function()
         effect:remove()
         Net.remove_bot(bot_id)
       end)

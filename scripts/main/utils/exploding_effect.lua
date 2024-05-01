@@ -15,6 +15,17 @@ local function update_tracked_position(exploding_effect)
 end
 
 local function explode(self, explosion_bot_id)
+  self.count = self.count + 1
+
+  if self.limit and self.count > self.limit then
+    self.done = true
+  end
+
+  if self.done then
+    Net.remove_bot(explosion_bot_id)
+    return
+  end
+
   update_tracked_position(self)
 
   local offset_x = (math.random() * 2 - 1) * EXPLOSION_AXIS_RANGE
@@ -28,11 +39,6 @@ local function explode(self, explosion_bot_id)
     self.position.y + offset_y,
     self.position.z
   )
-
-  if self.done then
-    Net.remove_bot(explosion_bot_id)
-    return
-  end
 
   Net.play_sound(self.area_id, "/server/assets/sounds/explode.ogg")
 
@@ -72,26 +78,35 @@ local function spawn(self)
   end
 end
 
+---@class ExplodingEffectOptions
+---@field limit? number
+
 ---@class ExplodingEffect
 local ExplodingEffect = {}
 
 ---@param actor_id Net.ActorId
+---@param options? ExplodingEffectOptions
 ---@return ExplodingEffect
-function ExplodingEffect:new(actor_id)
-  local exploding_effect = {
+function ExplodingEffect:new(actor_id, options)
+  local effect = {
     tracked_actor_id = actor_id,
+    count = 0,
     position = nil,
     area_id = nil,
     done = false
   }
 
-  setmetatable(exploding_effect, self)
+  if options and options.limit then
+    effect.limit = options.limit
+  end
+
+  setmetatable(effect, self)
   self.__index = self
 
-  update_tracked_position(exploding_effect)
-  spawn(exploding_effect)
+  update_tracked_position(effect)
+  spawn(effect)
 
-  return exploding_effect
+  return effect
 end
 
 function ExplodingEffect:remove()
