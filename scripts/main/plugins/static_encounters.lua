@@ -10,14 +10,13 @@ local SURPRISED_EMOTE = "EXCLAMATION MARK!"
 
 ---@class StaticEncountersPlugin.Encounter
 ---@field package_path string
----@field area_id string
 ---@field bounds { x: number, y: number, z: number, width: number, height: number }
 ---@field shared? boolean
 ---@field activated boolean
 ---@field caught_players any[]
 
 ---@class StaticEncountersPlugin
----@field private _encounters StaticEncountersPlugin.Encounter[]
+---@field private _area_encounters table<string, StaticEncountersPlugin.Encounter[]>
 ---@field private _caught_players table<Net.ActorId, boolean>
 ---@field private _results_listeners fun(event)[]
 local StaticEncountersPlugin = {}
@@ -40,9 +39,15 @@ end
 
 ---@param options StaticEncountersPlugin.EncounterOptions
 function StaticEncountersPlugin:register_encounter(options)
-  table.insert(self._encounters, {
+  local encounters = self._area_encounters[options.area_id]
+
+  if not encounters then
+    encounters = {}
+    self._area_encounters[options.area_id] = encounters
+  end
+
+  table.insert(encounters, {
     package_path = options.package_path,
-    area_id = options.area_id,
     bounds = options.bounds,
     shared = options.shared,
     caught_players = {},
@@ -56,11 +61,12 @@ function StaticEncountersPlugin:init(activity)
   activity:on("player_move", function(event)
     local already_caught = self._caught_players[event.player_id]
     local area_id = activity:player_area(event.player_id)
+    local encounters = self._area_encounters[area_id]
 
     -- encounters
-    if not already_caught then
-      for _, encounter in ipairs(self._encounters) do
-        if encounter.area_id ~= area_id or encounter.bounds.z ~= event.z or not Rectangle.contains_point(encounter.bounds, event) then
+    if not already_caught and encounters then
+      for _, encounter in ipairs(encounters) do
+        if encounter.bounds.z ~= event.z or not Rectangle.contains_point(encounter.bounds, event) then
           goto continue
         end
 
@@ -70,13 +76,13 @@ function StaticEncountersPlugin:init(activity)
           local delay = 3
 
           if not encounter.shared then
-            self:remove_encounter(encounter)
+            self:remove_encounter(area_id, encounter)
             -- reduce wait time
             delay = 1
           end
 
           Async.sleep(delay).and_then(function()
-            self:start_encounter(encounter)
+            self:start_encounter(area_id, encounter)
           end)
         end
 
@@ -95,10 +101,12 @@ function StaticEncountersPlugin:init(activity)
 end
 
 ---@private
-function StaticEncountersPlugin:remove_encounter(encounter)
-  for i, other in ipairs(self._encounters) do
+function StaticEncountersPlugin:remove_encounter(area_id, encounter)
+  local encounters = self._area_encounters[area_id]
+
+  for i, other in ipairs(encounters) do
     if encounter == other then
-      table.remove(self._encounters, i)
+      table.remove(encounters, i)
       break
     end
   end
@@ -111,9 +119,9 @@ end
 
 ---@private
 ---@param encounter StaticEncountersPlugin.Encounter
-function StaticEncountersPlugin:start_encounter(encounter)
+function StaticEncountersPlugin:start_encounter(area_id, encounter)
   -- remove encounter from list to prevent catching more players
-  self:remove_encounter(encounter)
+  self:remove_encounter(area_id, encounter)
 
   -- start encounter
   local promises

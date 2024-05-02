@@ -341,9 +341,10 @@ function Net.EventEmitter:destroy() end
 ---@return string[]
 function Net.list_areas() end
 
---- Not implemented.
----@param new_area_id string
-function Net.create_area(new_area_id) end
+--- Returns true if the area_id matches an existing area.
+---@param area_id string
+---@return boolean
+function Net.is_area(area_id) end
 
 --- Overwrites all objects, tiles, and custom properties for the area, clients will be updated at the end of the tick.
 ---@param area_id string
