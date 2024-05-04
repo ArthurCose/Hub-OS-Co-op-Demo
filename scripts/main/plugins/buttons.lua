@@ -35,20 +35,21 @@ end
 ---@private
 ---@param activity Activity
 function ButtonsPlugin:init(activity)
+  ---@type table<Net.ActorId, [string, number]>
   local player_presses = {}
 
   activity:on("player_leave", function(event)
-    local button_index = player_presses[event.player_id]
+    local old_button = player_presses[event.player_id]
     player_presses[event.player_id] = nil
 
-    if button_index then
-      self:release_button(button_index)
+    if old_button then
+      self:release_button(event.player_id, old_button[1], old_button[2])
     end
   end)
 
   activity:on("player_move", function(event)
     local area_id = activity:player_area(event.player_id)
-    local old_button_index = player_presses[event.player_id]
+    local old_button = player_presses[event.player_id]
     player_presses[event.player_id] = nil
 
     local buttons = self._area_buttons[area_id]
@@ -59,7 +60,7 @@ function ButtonsPlugin:init(activity)
           goto continue
         end
 
-        player_presses[event.player_id] = i
+        player_presses[event.player_id] = { area_id, i }
         self:press_button(event.player_id, area_id, i)
 
         break
@@ -67,8 +68,8 @@ function ButtonsPlugin:init(activity)
       end
     end
 
-    if old_button_index then
-      self:release_button(event.player_id, area_id, old_button_index)
+    if old_button then
+      self:release_button(event.player_id, old_button[1], old_button[2])
     end
   end)
 end
