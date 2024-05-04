@@ -1,0 +1,108 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/colonel_hilt.png"
+
+animation state="0"
+frame duration="0.033" x="28" y="95" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="1"
+frame duration="0.033" x="33" y="95" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="2"
+frame duration="0.033" x="38" y="95" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="3"
+frame duration="0.033" x="43" y="95" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="4"
+frame duration="0.033" x="48" y="95" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="5"
+frame duration="0.033" x="53" y="95" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="6"
+frame duration="0.033" x="58" y="95" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="7"
+frame duration="0.033" x="63" y="95" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="8"
+frame duration="0.033" x="68" y="95" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="9"
+frame duration="0.033" x="73" y="95" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="10"
+frame duration="0.033" x="78" y="95" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="11"
+frame duration="0.033" x="83" y="95" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="12"
+frame duration="0.033" x="88" y="95" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="13"
+frame duration="0.033" x="93" y="95" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="14"
+frame duration="0.033" x="28" y="100" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="15"
+frame duration="0.033" x="33" y="100" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="16"
+frame duration="0.033" x="38" y="100" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="17"
+frame duration="0.033" x="43" y="100" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="18"
+frame duration="0.033" x="48" y="100" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="19"
+frame duration="0.033" x="53" y="100" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="20"
+frame duration="0.033" x="58" y="100" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="21"
+frame duration="0.033" x="63" y="100" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="22"
+frame duration="0.033" x="68" y="100" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="23"
+frame duration="0.033" x="73" y="100" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="24"
+frame duration="0.033" x="78" y="100" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="25"
+frame duration="0.033" x="83" y="100" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="26"
+frame duration="0.033" x="88" y="100" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="27"
+frame duration="0.033" x="93" y="100" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="28"
+frame duration="0.033" x="28" y="105" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+frame duration="0.033" x="25" y="71" w="48" h="16" originx="-16" originy="36" flipx="0" flipy="0"
+frame duration="0.033" x="38" y="37" w="34" h="27" originx="-13" originy="48" flipx="0" flipy="0"
+frame duration="0.033" x="38" y="2" w="51" h="30" originx="27" originy="66" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="37" w="32" h="30" originx="26" originy="66" flipx="0" flipy="0"
+frame duration="0.1" x="2" y="2" w="32" h="31" originx="26" originy="67" flipx="0" flipy="0"
+
+animation state="29"
+frame duration="0.033" x="33" y="105" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="95" w="22" h="13" originx="-22" originy="37" flipx="0" flipy="0"
+frame duration="0.033" x="76" y="37" w="17" h="20" originx="-13" originy="55" flipx="0" flipy="0"
+frame duration="0.1" x="2" y="71" w="19" h="20" originx="13" originy="57" flipx="0" flipy="0"
+
+animation state="30"
+frame duration="0.033" x="38" y="105" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="31"
+frame duration="0.033" x="43" y="105" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="32"
+frame duration="0.033" x="48" y="105" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"

@@ -1,0 +1,5 @@
+animation state="LEFT"
+frame duration="0.017" x="2" y="34" w="30" h="26" originx="16" originy="22"
+
+animation state="RIGHT"
+frame duration="0.017" x="2" y="2" w="15" h="28" originx="6" originy="22"

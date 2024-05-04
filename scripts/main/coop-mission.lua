@@ -115,7 +115,7 @@ function CoopMission:init(activity)
 
       self.lets_go_plugin:register_bot({
         bot_id = bot_id,
-        package_path = self.default_encounter_path,
+        package_path = object.custom_properties["Encounter"] or self.default_encounter_path,
         radius = 0.7,
         shared = true
       })

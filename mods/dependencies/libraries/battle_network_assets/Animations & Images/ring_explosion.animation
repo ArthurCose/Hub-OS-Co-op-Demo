@@ -1,0 +1,9 @@
+imagePath="C:/Users/seven/Desktop/ONB/resources/mods/enemies/Metrid/virus/ring_explosion.png"
+
+animation state="DEFAULT"
+frame duration="0.05" x="54" y="131" w="30" h="18" originx="15" originy="12" flipx="0" flipy="0"
+frame duration="0.05" x="2" y="131" w="48" h="25" originx="24" originy="16" flipx="0" flipy="0"
+frame duration="0.067" x="2" y="36" w="52" h="28" originx="26" originy="18" flipx="0" flipy="0"
+frame duration="0.05" x="2" y="2" w="54" h="30" originx="27" originy="20" flipx="0" flipy="0"
+frame duration="0.05" x="2" y="68" w="58" h="28" originx="29" originy="21" flipx="0" flipy="0"
+frame duration="0.05" x="2" y="100" w="60" h="27" originx="30" originy="22" flipx="0" flipy="0"

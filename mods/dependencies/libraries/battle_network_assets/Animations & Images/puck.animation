@@ -1,0 +1,4 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/puck.png"
+
+animation state="DEFAULT"
+frame duration="0.033" x="2" y="2" w="32" h="19" originx="16" originy="15" flipx="0" flipy="0"

@@ -1,0 +1,5 @@
+animation state="BIG"
+frame x="2" y="2" w="32" h="22" originx="16" originy="15"
+
+animation state="SMALL"
+frame x="2" y="28" w="20" h="18" originx="10" originy="14"

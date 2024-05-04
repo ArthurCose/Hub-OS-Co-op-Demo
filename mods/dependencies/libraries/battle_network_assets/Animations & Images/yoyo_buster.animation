@@ -1,0 +1,4 @@
+imagePath="C:\Users\seven\OneDrive\Desktop\HubOS\client\mods\libraries\battle_network_helpers\Animations & Images\yoyo_buster.png"
+
+animation state="DEFAULT"
+frame duration="0.033" x="2" y="2" w="26" h="21" originx="3" originy="12" flipx="0" flipy="0"

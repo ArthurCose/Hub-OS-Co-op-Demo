@@ -1,0 +1,10 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/battle_fx0D_animations.png"
+
+animation state="DEFAULT"
+frame duration="0.05" x="52" y="83" w="47" h="43" originx="27" originy="36" flipx="0" flipy="0"
+frame duration="0.05" x="2" y="83" w="46" h="47" originx="26" originy="40" flipx="0" flipy="0"
+frame duration="0.05" x="58" y="2" w="47" h="48" originx="27" originy="41" flipx="0" flipy="0"
+
+animation state="SPAWN"
+frame duration="0.05" x="26" y="2" w="28" h="62" originx="16" originy="56" flipx="0" flipy="0"
+frame duration="0.05" x="2" y="2" w="20" h="77" originx="11" originy="71" flipx="0" flipy="0"

@@ -1,0 +1,5 @@
+[package]
+category = "library"
+id = "BattleNetwork.Assets"
+name = "MMBN Assets"
+description = "Provides images, sound, and animations for Battle Network themed mods."

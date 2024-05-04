@@ -1,0 +1,23 @@
+animation state="BIG_START"
+frame x="63" y="1" w="25" h="56" originx="13" originy="29" duration="0.033"
+frame x="1" y="37" w="30" h="48" originx="15" originy="25" duration="0.033"
+
+animation state="BIG_END"
+frame x="1" y="37" w="30" h="48" originx="15" originy="25" duration="0.033"
+frame x="63" y="1" w="25" h="56" originx="13" originy="29" duration="0.033"
+
+animation state="MEDIUM_START"
+frame x="32" y="1" w="25" h="40" originx="13" originy="20" duration="0.033"
+frame x="32" y="53" w="30" h="32" originx="15" originy="16" duration="0.033"
+
+animation state="MEDIUM_END"
+frame x="32" y="53" w="30" h="32" originx="15" originy="16" duration="0.033"
+frame x="32" y="1" w="25" h="40" originx="13" originy="20" duration="0.033"
+
+animation state="SMALL_START"
+frame x="7" y="1" w="18" h="34" originx="9" originy="18" duration="0.033"
+frame x="63" y="60" w="23" h="24" originx="11" originy="13" duration="0.033"
+
+animation state="SMALL_END"
+frame x="63" y="60" w="23" h="24" originx="11" originy="13" duration="0.033"
+frame x="7" y="1" w="18" h="34" originx="9" originy="18" duration="0.033"

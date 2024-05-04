@@ -1,0 +1,8 @@
+[package]
+id = "BattleNetwork6.TileStates.Grass"
+category = "tile_state"
+name = "BN6 Grass Tile"
+state_name = "Grass"
+texture_path = "texture.png"
+animation_path = "animation.animation"
+cleanser_element = "Fire"

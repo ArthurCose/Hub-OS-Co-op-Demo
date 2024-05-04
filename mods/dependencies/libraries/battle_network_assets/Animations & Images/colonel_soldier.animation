@@ -1,0 +1,25 @@
+imagePath="colonel_soldier_compressed.png"
+
+animation state="SPAWN"
+frame duration="0.017" x="119" y="0" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+frame duration="0.05" x="112" y="31" w="15" h="4" originx="7" originy="2" flipx="0" flipy="0"
+frame duration="0.05" x="24" y="93" w="24" h="6" originx="12" originy="3" flipx="0" flipy="0"
+frame duration="0.05" x="0" y="93" w="24" h="15" originx="12" originy="12" flipx="0" flipy="0"
+frame duration="0.083" x="50" y="62" w="37" h="34" originx="17" originy="31" flipx="0" flipy="0"
+frame duration="0.05" x="0" y="62" w="50" h="31" originx="12" originy="28" flipx="0" flipy="0"
+frame duration="0.033" x="68" y="0" w="51" h="31" originx="12" originy="28" flipx="0" flipy="0"
+
+animation state="ATTACK"
+frame duration="0.033" x="61" y="31" w="51" h="31" originx="12" originy="28" flipx="0" flipy="0"
+frame duration="0.033" x="0" y="31" w="61" h="31" originx="12" originy="28" flipx="0" flipy="0"
+frame duration="0.033" x="0" y="0" w="68" h="31" originx="12" originy="28" flipx="0" flipy="0"
+
+animation state="REMOVE"
+frame duration="0.067" x="87" y="62" w="37" h="34" originx="17" originy="31" flipx="0" flipy="0"
+frame duration="0.05" x="0" y="93" w="24" h="15" originx="12" originy="12" flipx="0" flipy="0"
+frame duration="0.05" x="24" y="93" w="24" h="6" originx="12" originy="3" flipx="0" flipy="0"
+frame duration="0.05" x="112" y="31" w="15" h="4" originx="7" originy="2" flipx="0" flipy="0"
+frame duration="0.017" x="120" y="0" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+
+animation state="WAIT"
+frame duration="0.033" x="68" y="0" w="51" h="31" originx="12" originy="28" flipx="0" flipy="0"

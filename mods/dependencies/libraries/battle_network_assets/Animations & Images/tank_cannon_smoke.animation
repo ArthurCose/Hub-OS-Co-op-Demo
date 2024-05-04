@@ -1,0 +1,8 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/TankCannonSmoke.png"
+
+animation state="DEFAULT"
+frame duration="0.1" x="28" y="64" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="64" w="22" h="44" originx="-16" originy="38" flipx="0" flipy="0"
+frame duration="0.033" x="33" y="2" w="24" h="48" originx="-16" originy="40" flipx="0" flipy="0"
+frame duration="0.05" x="2" y="2" w="27" h="58" originx="-19" originy="45" flipx="0" flipy="0"
+frame duration="0.033" x="33" y="64" w="1" h="1" originx="192" originy="192" flipx="0" flipy="0"

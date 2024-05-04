@@ -1,0 +1,9 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/Games, Engines, and Assets/0 Games/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/recover.png"
+
+animation state="DEFAULT"
+frame duration="0.033" x="37" y="100" w="31" h="29" originx="15" originy="24" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="100" w="31" h="32" originx="15" originy="29" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="54" w="31" h="42" originx="15" originy="40" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="2" w="31" h="48" originx="15" originy="48" flipx="0" flipy="0"
+frame duration="0.05" x="37" y="2" w="31" h="43" originx="15" originy="52" flipx="0" flipy="0"
+frame duration="0.05" x="37" y="54" w="31" h="39" originx="15" originy="54" flipx="0" flipy="0"

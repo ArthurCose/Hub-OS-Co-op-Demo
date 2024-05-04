@@ -1,0 +1,7 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/Games, Engines, and Assets/1 Assets/bn_all_sprites_onb_v04/MEGAMAN6_GXXBR5E08/10_battle_fx/battle_fx3C_animations.png"
+
+animation state="DEFAULT"
+frame duration="0.05" x="2" y="78" w="104" h="68" originx="54" originy="36" flipx="0" flipy="0"
+frame duration="0.05" x="2" y="2" w="109" h="72" originx="52" originy="40" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="150" w="105" h="53" originx="52" originy="39" flipx="0" flipy="0"
+frame duration="0.033" x="111" y="150" w="13" h="42" originx="-36" originy="28" flipx="0" flipy="0"

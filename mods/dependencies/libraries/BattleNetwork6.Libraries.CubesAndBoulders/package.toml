@@ -1,0 +1,8 @@
+[package]
+category = "library"
+id = "BattleNetwork6.Libraries.CubesAndBoulders"
+name = "BN6 Cubes and Boulders Library"
+description = "Shared code for creating Cubes and Boulders."
+
+[dependencies]
+libraries = ["BattleNetwork.Assets", "dev.konstinople.library.sliding_obstacle"]

@@ -1,0 +1,14 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/battle_fx25_animations.png"
+
+animation state="LOOP"
+frame duration="0.133" x="2" y="63" w="32" h="45" originx="16" originy="37" flipx="0" flipy="0"
+frame duration="0.133" x="74" y="63" w="30" h="44" originx="15" originy="36" flipx="0" flipy="0"
+
+animation state="POP"
+frame duration="0.017" x="38" y="63" w="32" h="45" originx="16" originy="37" flipx="0" flipy="0"
+frame duration="0.05" x="63" y="2" w="41" h="51" originx="21" originy="43" flipx="0" flipy="0"
+frame duration="0.05" x="2" y="2" w="57" h="57" originx="28" originy="49" flipx="0" flipy="0"
+
+animation state="SPAWN"
+frame duration="0.083" x="26" y="112" w="20" h="36" originx="10" originy="28" flipx="0" flipy="0"
+frame duration="0.083" x="2" y="112" w="20" h="37" originx="10" originy="29" flipx="0" flipy="0"

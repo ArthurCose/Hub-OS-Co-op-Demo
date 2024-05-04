@@ -1,0 +1,10 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/erase_cursor.png"
+
+animation state="DEFAULT"
+frame duration="0.1" x="2" y="2" w="32" h="22" originx="16" originy="12" flipx="0" flipy="0"
+frame duration="0.1" x="2" y="28" w="32" h="22" originx="16" originy="12" flipx="0" flipy="0"
+frame duration="0.1" x="2" y="54" w="32" h="22" originx="16" originy="12" flipx="0" flipy="0"
+frame duration="0.1" x="2" y="80" w="32" h="22" originx="16" originy="12" flipx="0" flipy="0"
+
+animation state="LOCK"
+frame duration="0.033" x="38" y="80" w="28" h="20" originx="14" originy="11" flipx="0" flipy="0"

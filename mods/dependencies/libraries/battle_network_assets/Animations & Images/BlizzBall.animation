@@ -1,0 +1,10 @@
+animation state="0"
+frame duration="0.05" x="2" y="107" w="37" h="33" originx="21" originy="27"
+frame duration="0.05" x="43" y="107" w="30" h="32" originx="15" originy="26"
+frame duration="0.05" x="48" y="57" w="37" h="36" originx="21" originy="30"
+
+animation state="1"
+frame duration="0.05" x="58" y="2" w="52" h="48" originx="29" originy="41"
+frame duration="0.05" x="2" y="57" w="42" h="46" originx="21" originy="39"
+frame duration="0.05" x="2" y="2" w="52" h="51" originx="29" originy="44"
+

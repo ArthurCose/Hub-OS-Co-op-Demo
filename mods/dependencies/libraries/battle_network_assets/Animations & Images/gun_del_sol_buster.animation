@@ -1,0 +1,37 @@
+imagePath="C:\Users\seven\OneDrive\Desktop\HubOS\client\mods\libraries\battle_network_helpers\Animations & Images\gun_del_sol_buster.png"
+
+animation state="SPAWN_GunDelS1"
+frame duration="0.033" x="0" y="0" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+frame duration="0.05" x="35" y="0" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+frame duration="0.033" x="0" y="36" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+
+animation state="LOOP_GunDelS1"
+frame duration="0.033" x="0" y="36" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+frame duration="0.033" x="36" y="36" w="38" h="31" originx="2" originy="22" flipx="0" flipy="0"
+
+animation state="SPAWN_GunDelS2"
+frame duration="0.033" x="0" y="0" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+frame duration="0.05" x="35" y="0" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+frame duration="0.033" x="0" y="72" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+
+animation state="LOOP_GunDelS2"
+frame duration="0.033" x="0" y="72" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+frame duration="0.033" x="36" y="72" w="38" h="31" originx="2" originy="22" flipx="0" flipy="0"
+
+animation state="SPAWN_GunDelS3"
+frame duration="0.033" x="0" y="0" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+frame duration="0.05" x="35" y="0" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+frame duration="0.033" x="0" y="108" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+
+animation state="LOOP_GunDelS3"
+frame duration="0.033" x="0" y="108" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+frame duration="0.033" x="36" y="108" w="38" h="31" originx="2" originy="22" flipx="0" flipy="0"
+
+animation state="SPAWN_GunDelEX"
+frame duration="0.033" x="0" y="0" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+frame duration="0.05" x="35" y="0" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+frame duration="0.033" x="0" y="144" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+
+animation state="LOOP_GunDelS1 4"
+frame duration="0.033" x="0" y="144" w="31" h="31" originx="2" originy="22" flipx="0" flipy="0"
+frame duration="0.033" x="36" y="144" w="38" h="31" originx="2" originy="22" flipx="0" flipy="0"

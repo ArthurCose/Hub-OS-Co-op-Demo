@@ -1,0 +1,93 @@
+# @frame_rate 60
+
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/cards/com_BN6_Standard_005/attachment.png"
+
+animation state="ATTACK_Vulcan1"
+frame duration="2f" x="0" y="19" w="37" h="17" originx="2" originy="10" flipx="0" flipy="0"
+frame duration="3f" x="37" y="19" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="2f" x="0" y="0" w="36" h="19" originx="2" originy="11" flipx="0" flipy="0"
+frame duration="3f" x="37" y="19" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="2f" x="0" y="36" w="37" h="17" originx="2" originy="9" flipx="0" flipy="0"
+frame duration="3f" x="37" y="19" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="2f" x="0" y="53" w="39" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="3f" x="37" y="19" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+
+animation state="END_Vulcan1"
+frame duration="12f" x="36" y="0" w="27" h="19" originx="2" originy="11" flipx="0" flipy="0"
+
+animation state="SPAWN_Vulcan1"
+frame duration="1f" x="38" y="36" w="27" h="16" originx="1" originy="9" flipx="0" flipy="0"
+frame duration="1f" x="41" y="54" w="27" h="16" originx="1" originy="9" flipx="0" flipy="0"
+frame duration="1f" x="38" y="20" w="27" h="16" originx="1" originy="9" flipx="0" flipy="0"
+
+animation state="ATTACK_Vulcan2"
+frame duration="2f" x="0" y="89" w="37" h="17" originx="2" originy="10" flipx="0" flipy="0"
+frame duration="3f" x="37" y="89" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="2f" x="0" y="70" w="36" h="19" originx="2" originy="11" flipx="0" flipy="0"
+frame duration="3f" x="37" y="89" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="2f" x="0" y="106" w="37" h="17" originx="2" originy="9" flipx="0" flipy="0"
+frame duration="3f" x="37" y="89" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="2f" x="0" y="123" w="40" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="3f" x="37" y="89" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+
+animation state="END_Vulcan2"
+frame duration="12f" x="36" y="70" w="27" h="19" originx="2" originy="11" flipx="0" flipy="0"
+
+animation state="SPAWN_Vulcan2"
+frame duration="2f" x="38" y="106" w="27" h="16" originx="1" originy="9" flipx="0" flipy="0"
+frame duration="1f" x="41" y="54" w="27" h="16" originx="1" originy="9" flipx="0" flipy="0"
+frame duration="2f" x="36" y="72" w="27" h="16" originx="1" originy="9" flipx="0" flipy="0"
+
+animation state="ATTACK_Vulcan3"
+frame duration="2f" x="0" y="159" w="37" h="17" originx="2" originy="10" flipx="0" flipy="0"
+frame duration="3f" x="37" y="159" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="2f" x="0" y="140" w="36" h="19" originx="2" originy="11" flipx="0" flipy="0"
+frame duration="3f" x="37" y="159" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="2f" x="0" y="176" w="37" h="17" originx="2" originy="9" flipx="0" flipy="0"
+frame duration="3f" x="37" y="159" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="2f" x="0" y="193" w="40" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="3f" x="37" y="159" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+
+animation state="END_Vulcan3"
+frame duration="12f" x="36" y="140" w="27" h="19" originx="2" originy="11" flipx="0" flipy="0"
+
+animation state="SPAWN_Vulcan3"
+frame duration="2f" x="38" y="176" w="27" h="16" originx="1" originy="9" flipx="0" flipy="0"
+frame duration="1f" x="41" y="54" w="27" h="16" originx="1" originy="9" flipx="0" flipy="0"
+frame duration="2f" x="36" y="142" w="27" h="16" originx="1" originy="9" flipx="0" flipy="0"
+
+animation state="ATTACK_DarkVulc"
+frame duration="2f" x="0" y="229" w="37" h="17" originx="2" originy="10" flipx="0" flipy="0"
+frame duration="3f" x="37" y="229" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="2f" x="0" y="210" w="36" h="19" originx="2" originy="11" flipx="0" flipy="0"
+frame duration="3f" x="37" y="229" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="2f" x="0" y="246" w="37" h="17" originx="2" originy="9" flipx="0" flipy="0"
+frame duration="3f" x="37" y="229" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="2f" x="0" y="263" w="40" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="3f" x="37" y="229" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+
+animation state="END_DarkVulc"
+frame duration="12f" x="36" y="210" w="27" h="19" originx="2" originy="11" flipx="0" flipy="0"
+
+animation state="SPAWN_DarkVulc"
+frame duration="2f" x="38" y="246" w="27" h="16" originx="1" originy="9" flipx="0" flipy="0"
+frame duration="1f" x="41" y="54" w="27" h="16" originx="1" originy="9" flipx="0" flipy="0"
+frame duration="2f" x="36" y="212" w="27" h="16" originx="1" originy="9" flipx="0" flipy="0"
+
+animation state="ATTACK_SuprVulc"
+frame duration="2f" x="0" y="19" w="37" h="17" originx="2" originy="10" flipx="0" flipy="0"
+frame duration="3f" x="37" y="19" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="2f" x="0" y="0" w="36" h="19" originx="2" originy="11" flipx="0" flipy="0"
+frame duration="3f" x="37" y="19" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="2f" x="0" y="36" w="37" h="17" originx="2" originy="9" flipx="0" flipy="0"
+frame duration="3f" x="37" y="19" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="2f" x="0" y="53" w="39" h="17" originx="3" originy="10" flipx="0" flipy="0"
+frame duration="3f" x="37" y="19" w="28" h="17" originx="3" originy="10" flipx="0" flipy="0"
+
+animation state="END_SuprVulc"
+frame duration="12f" x="36" y="0" w="27" h="19" originx="2" originy="11" flipx="0" flipy="0"
+
+animation state="SPAWN_SuprVulc"
+frame duration="1f" x="38" y="36" w="27" h="16" originx="1" originy="9" flipx="0" flipy="0"
+frame duration="1f" x="41" y="54" w="27" h="16" originx="1" originy="9" flipx="0" flipy="0"
+frame duration="1f" x="38" y="20" w="27" h="16" originx="1" originy="9" flipx="0" flipy="0"

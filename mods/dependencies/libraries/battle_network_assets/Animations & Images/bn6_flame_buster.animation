@@ -1,0 +1,10 @@
+imagePath="C:/Users/seven/Desktop/ONB Play/Development/resources/mods/cards/FireBurn1/flame_buster.png"
+
+animation state="0"
+frame duration="0.017" x="2" y="2" w="21" h="15" originx="5" originy="7"
+
+animation state="1"
+frame duration="0.05" x="2" y="21" w="21" h="15" originx="5" originy="7"
+point label="flame" x="19" y="7"
+frame duration="0.033" x="2" y="40" w="21" h="15" originx="7" originy="7"
+point label="flame" x="19" y="7"

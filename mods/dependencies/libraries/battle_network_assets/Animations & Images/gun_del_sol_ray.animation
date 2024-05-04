@@ -1,0 +1,25 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/sun_ray.png"
+
+animation state="INDOORS"
+frame duration="0.05" x="0" y="3" w="37" h="80" originx="22" originy="52" flipx="0" flipy="0"
+frame duration="0.05" x="44" y="0" w="37" h="86" originx="22" originy="54" flipx="0" flipy="0"
+frame duration="0.05" x="88" y="0" w="37" h="86" originx="22" originy="54" flipx="0" flipy="0"
+frame duration="0.017" x="43" y="92" w="1" h="1" originx="22" originy="54" flipx="0" flipy="0"
+
+animation state="OUTDOORS"
+frame duration="0.05" x="146" y="3" w="37" h="80" originx="22" originy="52" flipx="0" flipy="0"
+frame duration="0.05" x="190" y="0" w="37" h="86" originx="22" originy="54" flipx="0" flipy="0"
+frame duration="0.05" x="234" y="0" w="37" h="86" originx="22" originy="54" flipx="0" flipy="0"
+frame duration="0.017" x="43" y="92" w="1" h="1" originx="22" originy="54" flipx="0" flipy="0"
+
+animation state="INDOORS_EX"
+frame duration="0.05" x="0" y="99" w="70" h="104" originx="22" originy="54" flipx="0" flipy="0"
+frame duration="0.05" x="76" y="99" w="70" h="104" originx="22" originy="54" flipx="0" flipy="0"
+frame duration="0.05" x="152" y="99" w="70" h="104" originx="22" originy="54" flipx="0" flipy="0"
+frame duration="0.017" x="43" y="92" w="1" h="1" originx="22" originy="54" flipx="0" flipy="0"
+
+animation state="OUTDOORS_EX"
+frame duration="0.05" x="0" y="207" w="70" h="104" originx="22" originy="54" flipx="0" flipy="0"
+frame duration="0.05" x="76" y="207" w="70" h="104" originx="22" originy="54" flipx="0" flipy="0"
+frame duration="0.05" x="152" y="207" w="70" h="104" originx="22" originy="54" flipx="0" flipy="0"
+frame duration="0.017" x="43" y="92" w="1" h="1" originx="22" originy="54" flipx="0" flipy="0"

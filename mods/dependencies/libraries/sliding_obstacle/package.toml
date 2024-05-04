@@ -1,0 +1,5 @@
+[package]
+category = "library"
+id = "dev.konstinople.library.sliding_obstacle"
+name = "Sliding Obstacle Library"
+description = "Shared for Obstacles that slide on Drag, such as Cubes and Boulders."

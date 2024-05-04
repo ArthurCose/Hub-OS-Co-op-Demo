@@ -1,0 +1,5 @@
+[package]
+category = "library"
+id = "dev.konstinople.library.iterator"
+name = "Iterator Library"
+description = "A library for stateful iterators."

@@ -1,0 +1,21 @@
+# @frame_rate 60
+
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/AirShot.png"
+
+animation state="DEFAULT"
+frame duration="4f" x="2" y="14" w="19" h="13" originx="2" originy="7" flipx="0" flipy="0"
+point label="Burst" x="16" y="6"
+frame duration="3f" x="34" y="14" w="18" h="13" originx="3" originy="7" flipx="0" flipy="0"
+point label="Burst" x="16" y="6"
+frame duration="6f" x="2" y="14" w="19" h="13" originx="2" originy="7" flipx="0" flipy="0"
+point label="Burst" x="16" y="6"
+frame duration="6f" x="2" y="14" w="19" h="13" originx="2" originy="7" flipx="0" flipy="0"
+point label="Burst" x="16" y="6"
+frame duration="6f" x="2" y="14" w="19" h="13" originx="2" originy="7" flipx="0" flipy="0"
+point label="Burst" x="16" y="6"
+
+animation state="AIR"
+frame duration="1f" x="66" y="14" w="15" h="16" originx="0" originy="8" flipx="0" flipy="0"
+frame duration="1f" x="86" y="9" w="29" h="26" originx="0" originy="13" flipx="0" flipy="0"
+frame duration="1f" x="122" y="9" w="28" h="26" originx="0" originy="13" flipx="0" flipy="0"
+frame duration="1f" x="158" y="4" w="24" h="37" originx="0" originy="19" flipx="0" flipy="0"

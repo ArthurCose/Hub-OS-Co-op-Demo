@@ -1,0 +1,8 @@
+[package]
+category = "library"
+id = "dev.konstinople.library.ai"
+name = "Konst AI Library"
+description = "Library for building AI with a pool of action plans.\n\nWorks well with `dev.konstinople.library.iterator`"
+
+[dependencies]
+libraries = ["dev.konstinople.library.iterator"]

@@ -1,0 +1,14 @@
+# @frame_rate 60
+
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/tank_cannon.png"
+
+animation state="DEFAULT"
+frame duration="2f" x="0" y="56" w="42" h="25" originx="20" originy="13" flipx="0" flipy="0"
+frame duration="2f" x="73" y="52" w="50" h="25" originx="20" originy="13" flipx="0" flipy="0"
+frame duration="16f" x="144" y="32" w="51" h="25" originx="20" originy="13" flipx="0" flipy="0"
+frame duration="1f" x="144" y="0" w="79" h="32" originx="24" originy="18" flipx="0" flipy="0"
+frame duration="1f" x="73" y="0" w="71" h="52" originx="25" originy="28" flipx="0" flipy="0"
+frame duration="1f" x="73" y="0" w="71" h="52" originx="26" originy="28" flipx="0" flipy="0"
+frame duration="1f" x="73" y="0" w="71" h="52" originx="27" originy="28" flipx="0" flipy="0"
+frame duration="3f" x="0" y="0" w="73" h="56" originx="27" originy="30" flipx="0" flipy="0"
+frame duration="11f" x="195" y="32" w="51" h="25" originx="27" originy="13" flipx="0" flipy="0"

@@ -1,0 +1,20 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/CubeBN6.png"
+
+animation state="SPAWN"
+frame duration="0.033" x="38" y="134" w="30" h="5" originx="15" originy="30" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="2" w="32" h="40" originx="16" originy="30" flipx="0" flipy="0"
+frame duration="0.033" x="38" y="2" w="32" h="40" originx="16" originy="30" flipx="0" flipy="0"
+frame duration="0.033" x="74" y="2" w="32" h="40" originx="16" originy="30" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="46" w="32" h="40" originx="16" originy="30" flipx="0" flipy="0"
+
+animation state="ROCK"
+frame duration="0.033" x="38" y="46" w="32" h="40" originx="16" originy="30" flipx="0" flipy="0"
+
+animation state="ICE"
+frame duration="0.033" x="74" y="46" w="32" h="40" originx="16" originy="30" flipx="0" flipy="0"
+
+animation state="METAL"
+frame duration="0.167" x="2" y="90" w="32" h="40" originx="16" originy="30" flipx="0" flipy="0"
+frame duration="0.167" x="38" y="90" w="32" h="40" originx="16" originy="30" flipx="0" flipy="0"
+frame duration="0.167" x="74" y="90" w="32" h="40" originx="16" originy="30" flipx="0" flipy="0"
+frame duration="0.167" x="2" y="134" w="32" h="40" originx="16" originy="30" flipx="0" flipy="0"

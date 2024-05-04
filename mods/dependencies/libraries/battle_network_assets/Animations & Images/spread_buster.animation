@@ -1,0 +1,12 @@
+# @frame_rate 60
+
+imagePath="C:\Users\seven\OneDrive\Desktop\HubOS\client\mods\libraries\battle_network_helpers\Animations & Images\spread_buster.png"
+
+animation state="DEFAULT"
+frame duration="1f" x="3" y="8" w="21" h="16" originx="2" originy="7" flipx="0" flipy="0"
+frame duration="1f" x="29" y="8" w="21" h="16" originx="2" originy="7" flipx="0" flipy="0"
+frame duration="1f" x="29" y="8" w="21" h="16" originx="3" originy="7" flipx="0" flipy="0"
+frame duration="1f" x="56" y="7" w="42" h="17" originx="4" originy="8" flipx="0" flipy="0"
+frame duration="2f" x="100" y="0" w="49" h="31" originx="4" originy="15" flipx="0" flipy="0"
+frame duration="1f" x="153" y="0" w="52" h="32" originx="2" originy="16" flipx="0" flipy="0"
+frame duration="16f" x="29" y="8" w="21" h="16" originx="3" originy="7" flipx="0" flipy="0"

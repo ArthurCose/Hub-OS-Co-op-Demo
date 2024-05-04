@@ -1,0 +1,14 @@
+# originally by keristero
+[package]
+category = "encounter"
+id = "BattleNetwork6.Mettaur"
+name = "Mettaur"
+description = "BN6 accurate Mettaur"
+preview_texture_path = "preview.png"
+
+[[defines.characters]]
+id = "BattleNetwork6.Mettaur.Enemy"
+path = "Mettaur"
+
+[dependencies]
+libraries = ["BattleNetwork.Assets"]

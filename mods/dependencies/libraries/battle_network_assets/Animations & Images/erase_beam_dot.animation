@@ -1,0 +1,4 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/erase_beam_dot.png"
+
+animation state="DEFAULT"
+frame duration="0.017" x="2" y="2" w="8" h="8" originx="4" originy="4" flipx="0" flipy="0"

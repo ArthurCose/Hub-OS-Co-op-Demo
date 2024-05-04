@@ -1,0 +1,16 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/battle_fx02_animations.png"
+
+animation state="SPAWN"
+frame duration="0.033" x="38" y="111" w="32" h="25" originx="16" originy="17" flipx="0" flipy="0"
+frame duration="0.033" x="74" y="60" w="32" h="30" originx="16" originy="22" flipx="0" flipy="0"
+frame duration="0.033" x="74" y="2" w="32" h="47" originx="16" originy="39" flipx="0" flipy="0"
+
+animation state="LOOP"
+frame duration="0.033" x="2" y="60" w="32" h="47" originx="16" originy="39" flipx="0" flipy="0"
+frame duration="0.033" x="38" y="2" w="32" h="52" originx="16" originy="44" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="2" w="32" h="54" originx="16" originy="46" flipx="0" flipy="0"
+
+animation state="DESPAWN"
+frame duration="0.017" x="38" y="60" w="32" h="47" originx="16" originy="39" flipx="0" flipy="0"
+frame duration="0.017" x="2" y="111" w="32" h="30" originx="16" originy="22" flipx="0" flipy="0"
+frame duration="0.017" x="74" y="111" w="32" h="25" originx="16" originy="17" flipx="0" flipy="0"

@@ -1,0 +1,4 @@
+imagePath="C:\Users\seven\Desktop\ONB\resources\mods\enemies\Metrid\virus\meteor.png"
+
+animation state="DEFAULT"
+frame duration="0.033" x="2" y="2" w="40" h="38" originx="10" originy="34" flipx="1" flipy="0"

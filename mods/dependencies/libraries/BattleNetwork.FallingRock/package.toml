@@ -1,0 +1,6 @@
+[package]
+category = "library"
+id = "BattleNetwork.FallingRock"
+name = "Falling Rock Library"
+description = "Used for dropping falling rocks."
+preview_texture_path = "preview.png"

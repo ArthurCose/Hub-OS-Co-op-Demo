@@ -1,0 +1,6 @@
+imagePath="C:\Users\seven\OneDrive\Desktop\HubOS\client\mods\libraries\battle_network_helpers\Animations & Images\yoyo_projectile.png"
+
+animation state="DEFAULT"
+frame duration="0.033" x="2" y="46" w="40" h="38" originx="19" originy="39" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="2" w="40" h="40" originx="19" originy="40" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="88" w="41" h="38" originx="20" originy="39" flipx="0" flipy="0"

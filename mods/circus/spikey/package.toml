@@ -1,0 +1,7 @@
+[package]
+category = "encounter"
+id = "dev.konstinople.co-op.spikey"
+
+[dependencies]
+tile_states = ["BattleNetwork6.TileStates.Grass"]
+characters = ["BattleNetwork3.Character.Spikey"]

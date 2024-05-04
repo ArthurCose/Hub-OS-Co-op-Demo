@@ -1,0 +1,14 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/battle_fx0C_animations.png"
+
+animation state="DATA"
+frame duration="0.1" x="73" y="67" w="23" h="53" originx="11" originy="49" flipx="0" flipy="0"
+frame duration="0.1" x="49" y="67" w="20" h="55" originx="10" originy="51" flipx="0" flipy="0"
+frame duration="0.1" x="2" y="67" w="19" h="57" originx="9" originy="53" flipx="0" flipy="0"
+frame duration="0.1" x="29" y="2" w="20" h="59" originx="9" originy="55" flipx="0" flipy="0"
+frame duration="0.1" x="2" y="2" w="23" h="61" originx="11" originy="57" flipx="0" flipy="0"
+frame duration="0.1" x="25" y="67" w="20" h="56" originx="10" originy="52" flipx="0" flipy="0"
+frame duration="0.1" x="77" y="2" w="19" h="58" originx="9" originy="54" flipx="0" flipy="0"
+frame duration="0.1" x="53" y="2" w="20" h="59" originx="9" originy="55" flipx="0" flipy="0"
+
+animation state="GET"
+frame duration="0.033" x="2" y="128" w="43" h="18" originx="22" originy="23" flipx="0" flipy="0"

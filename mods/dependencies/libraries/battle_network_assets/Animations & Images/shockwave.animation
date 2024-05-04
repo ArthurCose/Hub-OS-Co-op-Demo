@@ -1,0 +1,22 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/battle_fx03_animations.png"
+
+animation state="SLOW"
+frame duration="0.083" x="122" y="130" w="29" h="28" originx="11" originy="24" flipx="0" flipy="0"
+frame duration="0.083" x="2" y="130" w="36" h="33" originx="17" originy="28" flipx="0" flipy="0"
+frame duration="0.083" x="2" y="91" w="37" h="35" originx="18" originy="30" flipx="0" flipy="0"
+frame duration="0.1" x="2" y="48" w="37" h="39" originx="22" originy="33" flipx="0" flipy="0"
+frame duration="0.083" x="2" y="2" w="38" h="42" originx="24" originy="36" flipx="0" flipy="0"
+
+animation state="NORMAL"
+frame duration="0.05" x="122" y="130" w="29" h="28" originx="11" originy="24" flipx="0" flipy="0"
+frame duration="0.05" x="2" y="130" w="36" h="33" originx="17" originy="28" flipx="0" flipy="0"
+frame duration="0.05" x="2" y="91" w="37" h="35" originx="18" originy="30" flipx="0" flipy="0"
+frame duration="0.067" x="2" y="48" w="37" h="39" originx="22" originy="33" flipx="0" flipy="0"
+frame duration="0.067" x="2" y="2" w="38" h="42" originx="24" originy="36" flipx="0" flipy="0"
+
+animation state="FAST"
+frame duration="0.033" x="122" y="130" w="29" h="28" originx="11" originy="24" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="130" w="36" h="33" originx="17" originy="28" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="91" w="37" h="35" originx="18" originy="30" flipx="0" flipy="0"
+frame duration="0.05" x="2" y="48" w="37" h="39" originx="22" originy="33" flipx="0" flipy="0"
+frame duration="0.05" x="2" y="2" w="38" h="42" originx="24" originy="36" flipx="0" flipy="0"

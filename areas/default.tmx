@@ -178,6 +178,7 @@
    <properties>
     <property name="Animation" value="/server/assets/bots/spikey.animation"/>
     <property name="Direction" value="Down Left"/>
+    <property name="Encounter" value="/server/mods/circus/spikey"/>
     <property name="Fire Offset" type="float" value="0"/>
     <property name="Texture" value="/server/assets/bots/spikey.png"/>
    </properties>
@@ -187,6 +188,7 @@
    <properties>
     <property name="Animation" value="/server/assets/bots/spikey.animation"/>
     <property name="Direction" value="Up Right"/>
+    <property name="Encounter" value="/server/mods/circus/spikey"/>
     <property name="Fire Offset" type="float" value="0.3"/>
     <property name="Texture" value="/server/assets/bots/spikey.png"/>
    </properties>
@@ -196,6 +198,7 @@
    <properties>
     <property name="Animation" value="/server/assets/bots/spikey.animation"/>
     <property name="Direction" value="Up Right"/>
+    <property name="Encounter" value="/server/mods/circus/spikey"/>
     <property name="Fire Offset" type="float" value="0.3"/>
     <property name="Texture" value="/server/assets/bots/spikey.png"/>
    </properties>

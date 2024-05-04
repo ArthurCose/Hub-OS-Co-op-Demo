@@ -1,0 +1,11 @@
+imagePath="C:/Users/seven/Desktop/ONB Play/Development/resources/mods/cards/FireBurn1/flame.png"
+
+animation state="0"
+frame duration="0.033" x="2" y="74" w="40" h="27" originx="15" originy="42"
+frame duration="0.033" x="2" y="2" w="42" h="32" originx="15" originy="45"
+frame duration="0.033" x="48" y="2" w="30" h="32" originx="0" originy="45"
+
+animation state="1"
+frame duration="0.033" x="46" y="74" w="40" h="27" originx="15" originy="42"
+frame duration="0.033" x="2" y="38" w="42" h="32" originx="15" originy="45"
+frame duration="0.033" x="48" y="38" w="30" h="32" originx="0" originy="45"

@@ -1,0 +1,19 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/heatman_burner.png"
+
+animation state="SPAWN"
+frame duration="0.083" x="122" y="201" w="8" h="44" originx="-16" originy="32" flipx="0" flipy="0"
+frame duration="0.033" x="134" y="201" w="12" h="44" originx="-12" originy="32" flipx="0" flipy="0"
+frame duration="0.05" x="150" y="201" w="22" h="44" originx="-2" originy="32" flipx="0" flipy="0"
+frame duration="0.017" x="176" y="201" w="20" h="44" originx="-4" originy="32" flipx="0" flipy="0"
+
+animation state="ATTACK_START"
+frame duration="0.017" x="119" y="136" w="20" h="44" originx="-4" originy="32" flipx="0" flipy="0"
+
+animation state="LOOP"
+frame duration="0.033" x="2" y="201" w="116" h="60" originx="92" originy="48" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="71" w="116" h="61" originx="92" originy="49" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="136" w="113" h="61" originx="89" originy="49" flipx="0" flipy="0"
+
+animation state="ATTACK_END"
+frame duration="0.05" x="2" y="2" w="111" h="65" originx="87" originy="53" flipx="0" flipy="0"
+frame duration="0.017" x="143" y="136" w="20" h="44" originx="-4" originy="32" flipx="0" flipy="0"

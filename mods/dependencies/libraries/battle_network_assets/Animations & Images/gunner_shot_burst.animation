@@ -1,0 +1,8 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/gunner_shot_burst.png"
+
+animation state="DEFAULT"
+frame duration="0.033" x="2" y="89" w="28" h="14" originx="14" originy="8" flipx="0" flipy="0"
+frame duration="0.05" x="52" y="2" w="38" h="38" originx="24" originy="32" flipx="0" flipy="0"
+frame duration="0.05" x="2" y="47" w="38" h="38" originx="24" originy="32" flipx="0" flipy="0"
+frame duration="0.033" x="44" y="47" w="37" h="38" originx="22" originy="32" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="2" w="46" h="41" originx="27" originy="37" flipx="0" flipy="0"
