@@ -43,5 +43,5 @@ end)
 
 Net:on("player_connect", function(event)
   -- preload package on the client
-  Net.provide_package_for_player(event.player_id, "/server/mods/circus/spikey")
+  Net.provide_package_for_player(event.player_id, "/server/mods/circus/default")
 end)

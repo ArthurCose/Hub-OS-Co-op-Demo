@@ -1,0 +1,12 @@
+[package]
+category = "encounter"
+id = "dev.konstinople.co-op.circus.default"
+
+[dependencies]
+libraries = ["BattleNetwork6.Libraries.CubesAndBoulders"]
+tile_states = ["BattleNetwork6.TileStates.Grass"]
+characters = [
+  "BattleNetwork4.Gaia.Enemy",
+  "BattleNetwork6.Mettaur.Enemy",
+  "BattleNetwork3.Metrid.Enemy"
+]

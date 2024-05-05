@@ -1,6 +1,6 @@
 [package]
 category = "encounter"
-id = "dev.konstinople.co-op.spikey"
+id = "dev.konstinople.co-op.circus.spikey"
 
 [dependencies]
 tile_states = ["BattleNetwork6.TileStates.Grass"]

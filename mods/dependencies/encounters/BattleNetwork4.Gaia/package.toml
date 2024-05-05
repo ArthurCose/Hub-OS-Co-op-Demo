@@ -1,0 +1,25 @@
+[package]
+category = "encounter"
+id = "BattleNetwork4.Gaia"
+name = "Gaia"
+description = ""
+preview_texture_path = "preview.png"
+
+[[defines.characters]]
+id = "BattleNetwork4.Gaia.Enemy"
+path = "gaia"
+
+[[defines.characters]]
+id = "BattleNetwork4.Gaia+.Enemy"
+path = "gaia_plus"
+
+[[defines.characters]]
+id = "BattleNetwork4.GaiaMega.Enemy"
+path = "gaia_mega"
+
+[dependencies]
+libraries = [
+  "BattleNetwork.Assets",
+  "BattleNetwork.FallingRock",
+  "dev.konstinople.library.ai"
+]
