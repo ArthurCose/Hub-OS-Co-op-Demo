@@ -215,7 +215,7 @@ function LetsGoPlugin:start_encounter(bot)
 
       if event then
         -- wait a bit before allowing encounters for the player again
-        Async.sleep(1.5).and_then(function()
+        Async.sleep(2).and_then(function()
           self._caught_players[event.player_id] = nil
         end)
 
