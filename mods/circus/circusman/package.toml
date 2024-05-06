@@ -1,0 +1,9 @@
+[package]
+category = "encounter"
+id = "dev.konstinople.co-op.circus.man"
+name = "CircusMan"
+
+[dependencies]
+characters = ["BattleNetwork6.CircusMan.Enemy"]
+libraries = ["BattleNetwork.Assets", "dev.konstinople.library.ai"]
+tile_states = ["BattleNetwork6.TileStates.Grass"]

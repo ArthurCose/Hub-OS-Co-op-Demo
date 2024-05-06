@@ -67,6 +67,7 @@
   <object id="69" name="Ampstr" x="144" y="144">
    <properties>
     <property name="Direction" value="Down Right"/>
+    <property name="Message" value="ClownMan fr"/>
    </properties>
    <point/>
   </object>
@@ -74,6 +75,7 @@
    <properties>
     <property name="Animation" value="/server/assets/bots/circusman.animation"/>
     <property name="Direction" value="Up Left"/>
+    <property name="Encounter" value="/server/mods/circus/circusman"/>
     <property name="Mug Animation" value="/server/assets/bots/three_panel_mug.animation"/>
     <property name="Mug Texture" value="/server/assets/bots/circusman_mug.png"/>
     <property name="Texture" value="/server/assets/bots/circusman.png"/>

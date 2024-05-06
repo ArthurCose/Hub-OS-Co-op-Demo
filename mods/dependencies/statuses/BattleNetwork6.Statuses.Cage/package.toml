@@ -1,0 +1,11 @@
+[package]
+category = "status"
+id = "BattleNetwork6.Statuses.Cage"
+name = "Cage Status"
+description = "Not accurate, but useful for co-op"
+preview_texture_path = "preview.png"
+flag_name = "Cage"
+blocks_flags = []
+blocked_by = []
+blocks_actions = true
+blocks_mobility = true

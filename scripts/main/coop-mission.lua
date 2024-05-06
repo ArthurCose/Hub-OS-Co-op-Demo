@@ -488,7 +488,7 @@ CoopMission.animate_boss_intro = Async.create_function(function(self)
 
       if event.ran or event.health == 0 then
         -- ran or deleted, kick out to the index
-        Net.transfer_player(event.player_id, "hubos.konstinople.dev", true)
+        self:delete_player(event.player_id)
       else
         -- assume victory, remove the boss bot
         Net.remove_bot(self.boss_bot_id, true)

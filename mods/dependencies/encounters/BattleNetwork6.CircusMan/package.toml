@@ -1,0 +1,13 @@
+[package]
+category = "encounter"
+id = "BattleNetwork6.CircusMan"
+name = "CircusMan"
+preview_texture_path = "preview.png"
+
+[[defines.characters]]
+id = "BattleNetwork6.CircusMan.Enemy"
+path = "character"
+
+[dependencies]
+libraries = ["BattleNetwork.Assets", "dev.konstinople.library.ai"]
+statuses = ["BattleNetwork6.Statuses.Cage"]
