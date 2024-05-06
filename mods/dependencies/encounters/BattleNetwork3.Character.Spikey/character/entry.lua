@@ -116,7 +116,7 @@ local function spawn_fireball(owner, tile, direction, damage, cascade_frame_inde
     spell:set_hit_props(
         HitProps.new(
             damage,
-            Hit.Impact | Hit.Flash,
+            Hit.Impact | Hit.Flash | Hit.Flinch,
             Element.Fire,
             owner:context(),
             Drag.None
