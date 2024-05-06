@@ -1,4 +1,4 @@
----@alias ActivityEventName "activity_destroyed" | "tick" | "player_join" | "player_leave" | "player_area_transfer" | "player_move" | "actor_interaction" | "tile_interaction" | "object_interaction"
+---@alias ActivityEventName "activity_destroyed" | "tick" | "player_join" | "player_leave" | "player_avatar_change" | "player_area_transfer" | "player_move" | "actor_interaction" | "tile_interaction" | "object_interaction"
 
 ---@class Activity
 ---@field private _player_list Net.ActorId[]
@@ -10,6 +10,7 @@
 local Activity = {
   net_event_whitelist = {
     player_area_transfer = 1,
+    player_avatar_change = 1,
     player_move = 1,
     actor_interaction = 1,
     tile_interaction = 1,

@@ -3,6 +3,7 @@ local LetsGoPlugin = require("scripts/main/plugins/lets_go")
 local SpikeyPlugin = require("scripts/main/plugins/spikey")
 local ButtonsPlugin = require("scripts/main/plugins/buttons")
 local DoorsPlugin = require("scripts/main/plugins/doors")
+local RetainDamagePlugin = require("scripts/main/plugins/retain_damage")
 local ExplodingEffect = require("scripts/main/utils/exploding_effect")
 local Direction = require("scripts/libs/direction")
 local Ampstr = require("scripts/libs/ampstr")
@@ -18,6 +19,7 @@ local SURPRISED_EMOTE = "EXCLAMATION MARK!"
 ---@field spikey_plugin SpikeyPlugin
 ---@field buttons_plugin ButtonsPlugin
 ---@field doors_plugin DoorsPlugin
+---@field retain_damage_plugin RetainDamagePlugin
 ---@field spawn_points Net.Object[]
 ---@field default_encounter_path string
 ---@field boss_object Net.Object
@@ -42,6 +44,7 @@ function CoopMission:new(activity, base_area_id)
     spikey_plugin = SpikeyPlugin:new(activity),
     buttons_plugin = ButtonsPlugin:new(activity),
     doors_plugin = DoorsPlugin:new(),
+    retain_damage_plugin = RetainDamagePlugin:new(activity),
     spawn_points = {},
     default_encounter_path = Net.get_area_custom_property(area_id, "Default Encounter"),
     boss_buttons_pressed = 0,
@@ -170,6 +173,12 @@ function CoopMission:init(activity)
       ampstr_message = object.custom_properties.Message or "Yippee! Thanks for saving me!"
     end
   end
+
+  self.retain_damage_plugin:on_apply(function(player_id, health)
+    if health <= 0 then
+      self:delete_player(player_id)
+    end
+  end)
 
   -- deal fireball damage
   self.spikey_plugin:on_fireball_collision(function(_, fireball_id, player_id)
