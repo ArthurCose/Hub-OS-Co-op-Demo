@@ -19,6 +19,6 @@ function encounter_init(encounter)
     end
   end
 
-  encounter:create_spawner("BattleNetwork6.CircusMan.Enemy", Rank.SP)
+  encounter:create_spawner("BattleNetwork6.CircusMan.Enemy", Rank.RV)
       :spawn_at(5, 2)
 end
