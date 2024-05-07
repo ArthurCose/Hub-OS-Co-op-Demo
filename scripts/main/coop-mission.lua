@@ -233,12 +233,14 @@ function CoopMission:init(activity)
       self.spikey_plugin:remove_bot(bot_id)
 
       if still_exists then
-        -- explode + delete after 3s
-        local effect = ExplodingEffect:new(bot_id)
+        Async.sleep(1).and_then(function()
+          -- explode + delete after 3s
+          local effect = ExplodingEffect:new(bot_id)
 
-        Async.sleep(0.7).and_then(function()
-          effect:remove()
-          Net.remove_bot(bot_id)
+          Async.sleep(0.7).and_then(function()
+            effect:remove()
+            Net.remove_bot(bot_id)
+          end)
         end)
       end
     end
