@@ -228,17 +228,19 @@ function CoopMission:init(activity)
       self:delete_player(event.player_id)
     elseif not event.ran then
       -- victory
+      local still_exists = self.lets_go_plugin:remove_bot(bot_id)
       self.bot_path_plugin:remove_bot(bot_id)
-      self.lets_go_plugin:remove_bot(bot_id)
       self.spikey_plugin:remove_bot(bot_id)
 
-      -- explode + delete after 3s
-      local effect = ExplodingEffect:new(bot_id)
+      if still_exists then
+        -- explode + delete after 3s
+        local effect = ExplodingEffect:new(bot_id)
 
-      Async.sleep(0.7).and_then(function()
-        effect:remove()
-        Net.remove_bot(bot_id)
-      end)
+        Async.sleep(0.7).and_then(function()
+          effect:remove()
+          Net.remove_bot(bot_id)
+        end)
+      end
     end
   end)
 

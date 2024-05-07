@@ -70,9 +70,10 @@ function LetsGoPlugin:remove_bot(bot_id)
   for i, bot in ipairs(self._bots) do
     if bot.id == bot_id then
       table.remove(self._bots, i)
-      break
+      return true
     end
   end
+  return false
 end
 
 ---@private

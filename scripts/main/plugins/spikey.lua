@@ -104,9 +104,10 @@ function SpikeyPlugin:remove_bot(bot_id)
   for i, bot in ipairs(self._spikeys) do
     if bot.id == bot_id then
       table.remove(self._spikeys, i)
-      break
+      return true
     end
   end
+  return false
 end
 
 ---@param callback fun(spikey_bot_id: Net.ActorId, fireball_bot_id: Net.ActorId, player_id: Net.ActorId)
