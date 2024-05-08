@@ -802,7 +802,7 @@ function character_init(entity)
     local cage_factory = create_cage_factory(entity)
 
     local clap_plan = ai:create_plan()
-    clap_plan:set_weight(4)
+    clap_plan:set_weight(5)
     clap_plan:set_action_iter_factory(function()
         return Ai.IteratorLib.chain(
             Ai.IteratorLib.take(1, move_factory),
@@ -811,7 +811,7 @@ function character_init(entity)
     end)
 
     local lion_plan = ai:create_plan()
-    lion_plan:set_weight(2)
+    lion_plan:set_weight(4)
     lion_plan:set_action_iter_factory(function()
         return Ai.IteratorLib.chain(
             Ai.IteratorLib.take(1, move_factory),
