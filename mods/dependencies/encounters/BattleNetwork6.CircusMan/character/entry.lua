@@ -305,11 +305,12 @@ end
 
 ---@param entity Entity
 local function lion_random_tile(entity)
+    local test_direction = entity:facing_away()
     local tiles = Ai.find_setup_tiles(entity, function(enemy, suggest)
-        local next_tile = enemy:get_tile(enemy:facing(), 1)
+        local next_tile = enemy:get_tile(test_direction, 1)
 
         while next_tile ~= nil do
-            local tile_after = next_tile:get_tile(enemy:facing(), 1)
+            local tile_after = next_tile:get_tile(test_direction, 1)
 
             if entity:can_move_to(next_tile) and tile_after and not tile_after:is_edge() then
                 suggest(next_tile)
@@ -692,7 +693,7 @@ end
 function character_init(entity)
     entity:set_name("CrcusMan")
     entity:set_height(60)
-    entity.cage_hit_flags = Hit.Impact | Hit.PierceInvis
+    entity.cage_hit_flags = Hit.Impact | Hit.PierceInvis | Hit.Flinch
 
     local rank = entity:rank()
     if rank == Rank.V1 then
