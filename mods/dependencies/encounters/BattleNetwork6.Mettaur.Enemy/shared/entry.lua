@@ -302,7 +302,13 @@ function spawn_shockwave(owner, tile, direction, damage, wave_texture, wave_anim
         local spell = Spell.new(team)
         spell:set_facing(direction)
         spell:set_tile_highlight(Highlight.Solid)
-        spell:set_hit_props(HitProps.new(damage, Hit.Flash, Element.None, owner:context(), Drag.new()))
+        spell:set_hit_props(HitProps.new(
+            damage,
+            Hit.Flinch | Hit.Flash | Hit.Impact,
+            Element.None,
+            owner:context(),
+            Drag.new()
+        ))
 
         local sprite = spell:sprite()
         sprite:set_texture(wave_texture)
