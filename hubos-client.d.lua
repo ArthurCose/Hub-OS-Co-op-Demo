@@ -887,12 +887,12 @@ function Entity:ignore_hole_tiles(enabled) end
 ---
 --- This table represents the temporary offset applied to the entity by movement.
 ---@return { x: number, y: number }
-function Entity:tile_offset() end
+function Entity:movement_offset() end
 
 --- Overwrites the frame temporary movement offset.
 ---@param x number
 ---@param y number
-function Entity:set_tile_offset(x, y) end
+function Entity:set_movement_offset(x, y) end
 
 --- Returns `{ x: number, y: number }`
 ---

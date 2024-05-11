@@ -15,7 +15,7 @@ local PARTICLE_ACC = 1
 
 local function spawn_rock_particle(parent, remaining_time)
   local field = parent:field()
-  local position = parent:tile_offset()
+  local position = parent:movement_offset()
   position.y = position.y - parent:height() / 2
 
   local artifact = Artifact.new()
@@ -61,7 +61,7 @@ local function shatter_rock(entity)
   entity:erase()
 
   local poof = bn_assets.ParticlePoof.new()
-  local offset = entity:tile_offset()
+  local offset = entity:movement_offset()
   poof:set_offset(offset.x, offset.y - entity:height() / 2)
   poof:sprite():set_layer(-2)
   entity:field():spawn(poof, entity:current_tile())
@@ -74,7 +74,7 @@ local function shatter_ice(entity)
   entity:erase()
 
   local poof = bn_assets.ParticlePoof.new()
-  local offset = entity:tile_offset()
+  local offset = entity:movement_offset()
   poof:set_offset(offset.x, offset.y - entity:height() / 2)
   poof:sprite():set_layer(-2)
   entity:field():spawn(poof, entity:current_tile())

@@ -111,7 +111,7 @@ function SlidingObstacle:create_obstacle()
   obstacle.on_collision_func = function()
     -- spawn collision artifact
     if self.collision_texture then
-      local tile_offset = obstacle:tile_offset()
+      local movement_offset = obstacle:movement_offset()
 
       local artifact = Artifact.new()
       artifact:set_texture(self.collision_texture)
@@ -126,7 +126,7 @@ function SlidingObstacle:create_obstacle()
         end)
       end
 
-      artifact:set_offset(tile_offset.x, tile_offset.y - obstacle:height() / 2)
+      artifact:set_offset(movement_offset.x, movement_offset.y - obstacle:height() / 2)
       obstacle:field():spawn(artifact, obstacle:current_tile())
     end
 
