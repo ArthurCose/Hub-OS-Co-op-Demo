@@ -2,3 +2,10 @@ _*
 .vscode
 scripts/bbs/data.json
 crash.txt
+
+# ignore files for running an updater client in mods folder
+mods/cache
+mods/resources
+mods/mods/players
+mods/config.ini
+mods/save.dat

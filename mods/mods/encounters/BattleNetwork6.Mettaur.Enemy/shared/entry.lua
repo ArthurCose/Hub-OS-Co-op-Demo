@@ -1,4 +1,4 @@
----@type BattleNetworkAssetsLib
+---@type BattleNetwork.Assets
 local bn_assets = require("BattleNetwork.Assets")
 
 local MobTracker = require("mob_tracker.lua")

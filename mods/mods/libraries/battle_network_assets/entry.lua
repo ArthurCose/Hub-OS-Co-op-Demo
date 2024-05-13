@@ -1,4 +1,4 @@
----@class BattleNetworkAssetsLib
+---@class BattleNetwork.Assets
 local Lib = {}
 
 local images_animations_folder = _folder_path .. "Animations & Images/"

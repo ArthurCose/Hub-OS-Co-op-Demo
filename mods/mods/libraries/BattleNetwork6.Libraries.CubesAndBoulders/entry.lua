@@ -1,9 +1,9 @@
 ---@type SlidingObstacleLib
 local SlidingObstacleLib = require("dev.konstinople.library.sliding_obstacle")
----@type BattleNetworkAssetsLib
+---@type BattleNetwork.Assets
 local bn_assets = require("BattleNetwork.Assets")
 
----@class BattleNetwork6.CubesAndBouldersLib
+---@class BattleNetwork6.Libraries.CubesAndBoulders
 local Lib = {}
 
 local HIT_TEXTURE = bn_assets.load_texture("bn6_hit_effects.png")

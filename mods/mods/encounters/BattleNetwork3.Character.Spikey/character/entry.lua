@@ -1,6 +1,6 @@
 ---@type KonstAiLib
 local Ai = require("dev.konstinople.library.ai")
----@type BattleNetworkAssetsLib
+---@type BattleNetwork.Assets
 local bn_assets = require("BattleNetwork.Assets")
 
 ---@class Spikey : Entity

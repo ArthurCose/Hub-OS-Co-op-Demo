@@ -1,6 +1,6 @@
 ---@type KonstAiLib
 local Ai = require("dev.konstinople.library.ai")
----@type BattleNetworkAssetsLib
+---@type BattleNetwork.Assets
 local bn_assets = require("BattleNetwork.Assets")
 
 local METEOR_TEXTURE = bn_assets.load_texture("meteor.png")
