@@ -327,7 +327,7 @@ function character_init(self)
         end
     end
     self:set_element(Element.Fire)
-    self:add_defense_rule(DefenseVirusBody.new())
+    self:add_aux_prop(StandardEnemyAux.new())
     local anim = self:animation()
     anim:load("Metrid.animation")
     anim:set_state("IDLE")

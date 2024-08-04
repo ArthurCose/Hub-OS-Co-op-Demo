@@ -73,7 +73,7 @@ function character_init(self, character_info)
     self:set_palette(Resources.load_texture(character_info.palette))
 
     --defense rules
-    self:add_defense_rule(DefenseVirusBody.new())
+    self:add_aux_prop(StandardEnemyAux.new())
 
     -- Initial state
     animation:set_state("IDLE")

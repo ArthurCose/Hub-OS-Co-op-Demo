@@ -256,7 +256,7 @@ function character_init(self)
     end
 
     --defense rules
-    self:add_defense_rule(DefenseVirusBody.new())
+    self:add_aux_prop(StandardEnemyAux.new())
 
     -- Initial state
     animation:set_state("IDLE")
