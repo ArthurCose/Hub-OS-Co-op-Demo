@@ -55,8 +55,6 @@ return function(character, gaia_props)
   character:set_height(39.0)
   character:set_texture(TEXTURE)
 
-  local sprite = character:sprite()
-
   local animation = character:animation()
   animation:load(_folder_path .. "battle.animation")
   animation:set_state("DEFAULT")
@@ -64,7 +62,7 @@ return function(character, gaia_props)
   -- defense rules
   local invincible = true
 
-  local iron_body_rule = DefenseRule.new(DefensePriority.Body, DefenseOrder.Always)
+  local iron_body_rule = DefenseRule.new(DefensePriority.Action, DefenseOrder.Always)
   iron_body_rule.can_block_func = function(judge, _, _, hit_props)
     if not invincible then
       return
