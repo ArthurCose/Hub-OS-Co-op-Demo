@@ -60,6 +60,7 @@ return function(character, gaia_props)
   animation:set_state("DEFAULT")
 
   -- defense rules
+  character:add_aux_prop(StandardEnemyAux.new())
   local invincible = true
 
   local iron_body_rule = DefenseRule.new(DefensePriority.Action, DefenseOrder.Always)
