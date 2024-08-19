@@ -1,0 +1,8 @@
+animation state="DEFAULT"
+frame duration="0.083" x="2" y="2" w="26" h="25" originx="12" originy="13"
+
+animation state="LOOP"
+frame duration="0.017" x="32" y="2" w="26" h="25" originx="12" originy="13"
+frame duration="0.017" x="2" y="31" w="26" h="25" originx="13" originy="13"
+frame duration="0.017" x="32" y="31" w="26" h="25" originx="12" originy="13"
+

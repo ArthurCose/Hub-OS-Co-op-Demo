@@ -185,14 +185,14 @@ function begin_guard(character)
     anim:on_complete(function()
         character.guard_transition = false
         character.guarding_defense_rule = DefenseRule.new(DefensePriority.Last, DefenseOrder.Always)
-        character.guarding_defense_rule.can_block_func = function(judge, attacker, defender)
+        character.guarding_defense_rule.defense_func = function(defense, attacker, defender)
             local attacker_hit_props = attacker:copy_hit_props()
             if attacker_hit_props.flags & Hit.PierceGuard == Hit.PierceGuard then
                 --cant block breaking hits with guard
                 return
             end
-            judge:block_impact()
-            judge:block_damage()
+            defense:block_impact()
+            defense:block_damage()
             if attacker_hit_props.damage > 0 then
                 Resources.play_audio(tink_sfx, AudioBehavior.Default)
                 battle_helpers.spawn_visual_artifact(character, character:current_tile(), guard_hit_effect_texture,

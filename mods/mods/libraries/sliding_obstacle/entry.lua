@@ -79,7 +79,7 @@ function SlidingObstacle:create_obstacle()
   obstacle:set_health(self.health or 200)
 
   local rule = DefenseRule.new(DefensePriority.Body, DefenseOrder.CollisionOnly)
-  rule.can_block_func = function(_, _, _, hit_props)
+  rule.defense_func = function(_, _, _, hit_props)
     if
         hit_props.element == Element.Break or
         hit_props.secondary_element == Element.Break or
@@ -88,7 +88,7 @@ function SlidingObstacle:create_obstacle()
       obstacle:delete()
     end
   end
-  rule.filter_statuses_func = function(hit_props)
+  rule.filter_func = function(hit_props)
     if hit_props.drag.distance > 0 then
       -- force a drag distance of one, we'll handle moving further
       hit_props.drag.distance = 1
