@@ -486,7 +486,7 @@ local function spawn_cage(entity, callback)
     local function rise_up_and_erase()
         local rise_time = 0
 
-        local component = cage:create_component(Lifetime.Battle)
+        local component = cage:create_component(Lifetime.ActiveBattle)
         component.on_update_func = function()
             rise_time = rise_time + 1
 

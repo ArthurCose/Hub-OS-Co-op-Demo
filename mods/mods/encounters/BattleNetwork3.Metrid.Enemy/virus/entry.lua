@@ -119,7 +119,7 @@ local function create_meteor_action(metrid)
     local metrid_anim = metrid:animation()
 
     local function create_component()
-        local meteor_component = metrid:create_component(Lifetime.Battle)
+        local meteor_component = metrid:create_component(Lifetime.ActiveBattle)
         local count = math.random(metrid._minimum_meteors, metrid._maximum_meteors)
         local attack_cooldown_max = metrid._meteor_cooldown
         local highlight_cooldown_max = 24

@@ -1,12 +1,12 @@
 imagePath="C:/Users/seven/OneDrive/Desktop/HubOS/client/mods/libraries/battle_network_helpers/Animations & Images/erase_man_compressed.png"
 
-animation state="PLAYER_IDLE"
+animation state="CHARACTER_IDLE"
 frame duration="0.133" x="720" y="132" w="68" h="61" originx="37" originy="55" flipx="0" flipy="0"
 frame duration="0.133" x="405" y="75" w="68" h="62" originx="37" originy="56" flipx="0" flipy="0"
 frame duration="0.133" x="652" y="203" w="68" h="60" originx="37" originy="54" flipx="0" flipy="0"
 frame duration="0.133" x="258" y="143" w="68" h="61" originx="37" originy="55" flipx="0" flipy="0"
 
-animation state="PLAYER_HIT"
+animation state="CHARACTER_HIT"
 frame duration="0.067" x="575" y="0" w="78" h="68" originx="36" originy="63" flipx="0" flipy="0"
 frame duration="0.033" x="653" y="0" w="78" h="68" originx="37" originy="63" flipx="0" flipy="0"
 frame duration="0.033" x="497" y="0" w="78" h="68" originx="38" originy="63" flipx="0" flipy="0"
@@ -29,13 +29,13 @@ frame duration="0.017" x="929" y="198" w="65" h="64" originx="36" originy="59" f
 frame duration="0.017" x="91" y="203" w="68" h="61" originx="37" originy="55" flipx="0" flipy="0"
 frame duration="0.017" x="788" y="193" w="68" h="61" originx="37" originy="55" flipx="0" flipy="0"
 
-animation state="PLAYER_SWORD"
+animation state="CHARACTER_SWING"
 frame duration="0.133" x="343" y="144" w="59" h="70" originx="33" originy="64" flipx="0" flipy="0"
 frame duration="0.033" x="0" y="226" w="67" h="60" originx="21" originy="54" flipx="0" flipy="0"
 frame duration="0.033" x="793" y="68" w="73" h="60" originx="20" originy="54" flipx="0" flipy="0"
 frame duration="0.167" x="567" y="68" w="85" h="59" originx="21" originy="53" flipx="0" flipy="0"
 
-animation state="PLAYER_THROW"
+animation state="CHARACTER_THROW"
 frame duration="0.083" x="793" y="128" w="64" h="65" originx="33" originy="59" flipx="0" flipy="0"
 frame duration="0.067" x="866" y="68" w="63" h="70" originx="18" originy="64" flipx="0" flipy="0"
 frame duration="0.067" x="783" y="254" w="70" h="56" originx="17" originy="50" flipx="0" flipy="0"
@@ -43,17 +43,17 @@ frame duration="0.083" x="405" y="262" w="66" h="49" originx="17" originy="45" f
 frame duration="0.05" x="258" y="204" w="68" h="60" originx="37" originy="54" flipx="0" flipy="0"
 frame duration="0.017" x="405" y="137" w="68" h="61" originx="37" originy="55" flipx="0" flipy="0"
 
-animation state="PLAYER_IDLE_FAST"
+animation state="CHARACTER_IDLE_FAST"
 frame duration="0.05" x="929" y="137" w="68" h="61" originx="37" originy="55" flipx="0" flipy="0"
 frame duration="0.017" x="652" y="142" w="68" h="61" originx="37" originy="55" flipx="0" flipy="0"
 
-animation state="PLAYER_HAND"
+animation state="CHARACTER_HAND"
 frame duration="0.033" x="195" y="96" w="59" h="70" originx="33" originy="64" flipx="0" flipy="0"
 frame duration="0.033" x="91" y="143" w="69" h="60" originx="21" originy="54" flipx="0" flipy="0"
 frame duration="0.033" x="720" y="68" w="73" h="64" originx="20" originy="58" flipx="0" flipy="0"
 frame duration="0.167" x="258" y="0" w="85" h="68" originx="21" originy="62" flipx="0" flipy="0"
 
-animation state="PLAYER_SHOOTING"
+animation state="CHARACTER_SHOOT"
 frame duration="0.017" x="91" y="74" w="62" h="69" originx="24" originy="63" flipx="0" flipy="0"
 frame duration="0.033" x="0" y="96" w="61" h="69" originx="25" originy="63" flipx="0" flipy="0"
 frame duration="0.033" x="929" y="68" w="62" h="69" originx="25" originy="63" flipx="0" flipy="0"
