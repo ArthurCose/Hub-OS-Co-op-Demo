@@ -1,0 +1,16 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/Games, Engines, and Assets/0 Games/HubOS Release/client/mods/libraries/battle_network_helpers/Animations & Images/bn6_elec_pulse.png"
+
+animation state="ElcPuls1"
+frame duration="0.033" x="0" y="3" w="74" h="58" originx="58" originy="39" flipx="0" flipy="0"
+frame duration="0.033" x="0" y="71" w="75" h="70" originx="53" originy="45" flipx="0" flipy="0"
+frame duration="0.033" x="0" y="150" w="77" h="64" originx="63" originy="42" flipx="0" flipy="0"
+
+animation state="ElcPuls2"
+frame duration="0.033" x="92" y="3" w="74" h="58" originx="58" originy="39" flipx="0" flipy="0"
+frame duration="0.033" x="92" y="71" w="75" h="70" originx="53" originy="45" flipx="0" flipy="0"
+frame duration="0.033" x="92" y="150" w="77" h="64" originx="63" originy="42" flipx="0" flipy="0"
+
+animation state="ElcPuls3"
+frame duration="0.033" x="192" y="3" w="74" h="58" originx="58" originy="39" flipx="0" flipy="0"
+frame duration="0.033" x="192" y="71" w="75" h="70" originx="53" originy="45" flipx="0" flipy="0"
+frame duration="0.033" x="192" y="150" w="77" h="64" originx="63" originy="42" flipx="0" flipy="0"

@@ -1,0 +1,6 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/Games, Engines, and Assets/0 Games/HubOS Release/client/mods/players/BN4_Megaman/forms/RS_01_FIRE/flame.png"
+
+animation state="DEFAULT"
+frame duration="0.033" x="2" y="69" w="39" h="24" originx="-3" originy="12" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="37" w="46" h="28" originx="-4" originy="15" flipx="0" flipy="0"
+frame duration="0.033" x="2" y="2" w="38" h="31" originx="-13" originy="16" flipx="0" flipy="0"

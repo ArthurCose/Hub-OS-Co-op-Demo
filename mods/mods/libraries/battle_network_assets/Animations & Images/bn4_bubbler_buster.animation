@@ -1,0 +1,11 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/Games, Engines, and Assets/0 Games/HubOS Release/client/mods/libraries/BattleNetwork.Assets/Animations & Images/bn4_bubbler_buster.png"
+
+animation state="DEFAULT"
+frame duration="0.033" x="86" y="0" w="28" h="16" originx="1" originy="8" flipx="0" flipy="0"
+frame duration="0.05" x="86" y="16" w="28" h="16" originx="1" originy="8" flipx="0" flipy="0"
+frame duration="0.033" x="0" y="22" w="28" h="16" originx="1" originy="8" flipx="0" flipy="0"
+frame duration="0.017" x="86" y="32" w="28" h="16" originx="1" originy="8" flipx="0" flipy="0"
+frame duration="0.033" x="43" y="20" w="42" h="16" originx="1" originy="8" flipx="0" flipy="0"
+frame duration="0.033" x="43" y="0" w="43" h="20" originx="1" originy="10" flipx="0" flipy="0"
+frame duration="0.033" x="0" y="0" w="43" h="22" originx="1" originy="11" flipx="0" flipy="0"
+frame duration="0.017" x="43" y="36" w="28" h="16" originx="1" originy="8" flipx="0" flipy="0"

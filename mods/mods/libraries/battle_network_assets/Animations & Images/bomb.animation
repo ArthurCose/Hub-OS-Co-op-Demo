@@ -4,6 +4,9 @@ frame x="1" y="1" w="11" h="11" originx="7" originy="6"
 animation state="BIGBOMB"
 frame x="13" y="1" w="11" h="11" originx="7" originy="6"
 
+animation state="DARK"
+frame x="25" y="1" w="11" h="11" originx="7" originy="6"
+
 animation state="BEETANK"
 frame x="1" y="13" w="15" h="13" originx="8" originy="7" duration="0.05"
 frame x="17" y="14" w="12" h="11" originx="7" originy="6" duration="0.05"

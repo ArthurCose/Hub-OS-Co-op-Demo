@@ -468,7 +468,7 @@ local function spawn_cage(entity, callback)
             5,
             entity.cage_hit_flags,
             Element.None,
-            cage
+            entity:context()
         )
     )
 

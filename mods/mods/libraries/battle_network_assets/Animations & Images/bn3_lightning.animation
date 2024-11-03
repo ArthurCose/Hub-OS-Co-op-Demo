@@ -1,0 +1,7 @@
+imagePath="C:/Users/seven/OneDrive/Desktop/Games, Engines, and Assets/0 Games/HubOS Release/client/mods/libraries/battle_network_helpers/Animations & Images/bn3_lightning.png"
+
+animation state="DEFAULT"
+frame duration="0.033" x="2" y="2" w="19" h="128" originx="6" originy="128" flipx="0" flipy="0"
+frame duration="0.033" x="25" y="2" w="8" h="128" originx="4" originy="128" flipx="0" flipy="0"
+frame duration="0.033" x="37" y="2" w="19" h="128" originx="6" originy="128" flipx="0" flipy="0"
+frame duration="0.033" x="60" y="2" w="8" h="128" originx="4" originy="128" flipx="0" flipy="0"

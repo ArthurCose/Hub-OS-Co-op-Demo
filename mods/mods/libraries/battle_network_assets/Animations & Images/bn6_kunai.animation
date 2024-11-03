@@ -1,0 +1,11 @@
+animation state="SPIN"
+frame duration="0.033" x="2" y="2" w="20" h="28" originx="10" originy="18"
+frame duration="0.033" x="2" y="61" w="32" h="13" originx="13" originy="6"
+frame duration="0.033" x="2" y="34" w="23" h="23" originx="10" originy="11"
+frame duration="0.033" x="29" y="34" w="23" h="23" originx="13" originy="11"
+frame duration="0.033" x="38" y="61" w="32" h="13" originx="19" originy="6"
+frame duration="0.033" x="26" y="2" w="20" h="28" originx="10" originy="18"
+
+animation state="POINT"
+frame duration="0.033" x="2" y="78" w="32" h="13" originx="13" originy="6"
+

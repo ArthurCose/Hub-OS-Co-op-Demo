@@ -1,0 +1,11 @@
+imagePath="C:/Users/seven/Downloads/FlashmanV5/flashlight.png"
+
+animation state="DEFAULT"
+frame duration="0.051" x="0" y="0" w="241" h="161" originx="19" originy="87" flipx="0" flipy="0"
+frame duration="0.068" x="0" y="161" w="241" h="161" originx="19" originy="87" flipx="0" flipy="0"
+frame duration="0.068" x="0" y="0" w="241" h="161" originx="19" originy="87" flipx="0" flipy="0"
+frame duration="0.068" x="0" y="161" w="241" h="161" originx="19" originy="87" flipx="0" flipy="0"
+frame duration="0.068" x="0" y="0" w="241" h="161" originx="19" originy="87" flipx="0" flipy="0"
+frame duration="0.068" x="0" y="161" w="241" h="161" originx="19" originy="87" flipx="0" flipy="0"
+frame duration="0.068" x="0" y="0" w="241" h="161" originx="19" originy="87" flipx="0" flipy="0"
+frame duration="0.051" x="0" y="161" w="241" h="161" originx="19" originy="87" flipx="0" flipy="0"
