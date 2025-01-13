@@ -9,3 +9,6 @@ mods/resources
 mods/mods/players
 mods/config.ini
 mods/save.dat
+
+# mod dependencies
+*.zip

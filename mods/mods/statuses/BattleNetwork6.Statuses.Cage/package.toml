@@ -1,9 +1,0 @@
-[package]
-category = "status"
-id = "BattleNetwork6.Statuses.Cage"
-name = "Cage Status"
-description = "Not accurate, but useful for co-op"
-icon_texture_path = "icon.png"
-flag_name = "Cage"
-blocks_actions = true
-blocks_mobility = true
