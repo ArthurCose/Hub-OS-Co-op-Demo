@@ -32,11 +32,11 @@ Net.EventEmitter = {}
 ---@field custom_properties Net.CustomProperties
 
 ---@class Net.ObjectOptions
----@field id? number
 ---@field name? string
 ---@field class? string deprecated
 ---@field type? string
 ---@field visible? boolean
+---@field privacy? boolean
 ---@field x? number
 ---@field y? number
 ---@field z? number
@@ -132,12 +132,16 @@ Net.EventEmitter = {}
 ---@field custom_atlas? Net.TextureAnimationPair,
 
 ---@class Net.SpriteOptions
----@field player_id? Net.ActorId restricts visibility to this specific player if set.
----@field parent_id "widget" | "hud" | Net.ActorId a point defined in the parent's animation file or built-in point.
----@field parent_point? string If unset the origin will be used. For "widget" and "hud" the origin is the top left of the screen.
----@field x? number offset from `parent_point` in screen pixels
----@field y? number offset from `parent_point` in screen pixels
----@field layer? number used for sorting sprites relative to the parent. Use negatives if you want to display in front of other sprites.
+---@field player_id? Net.ActorId Restricts visibility to this specific player if set.
+---@field parent_id "widget" | "hud" | Net.ActorId
+---A point defined in the parent's animation file or built-in point such as "EMOTE".
+---If unset the origin will be used.
+---
+---For "widget" and "hud" the origin is the top left of the screen.
+---@field parent_point? string
+---@field x? number Offset from `parent_point` in screen pixels
+---@field y? number Offset from `parent_point` in screen pixels
+---@field layer? number Used for sorting sprites relative to the parent. Use negatives if you want to display in front of other sprites.
 ---@field texture_path string
 ---@field animation_path? string
 ---@field animation? string Animation state, this state will be looped.
@@ -175,12 +179,13 @@ Net.EventEmitter = {}
 ---@field rotated boolean
 
 ---@class Net.BattleResults
----@field player_id string
+---@field player_id Net.ActorId
+---@field won boolean
 ---@field health number
 ---@field score number
 ---@field time number
 ---@field ran boolean
----@field emotion number
+---@field emotion string
 ---@field turns number
 ---@field allies { name: string, health: number }[]
 ---@field enemies { name: string, health: number }[]
@@ -279,9 +284,8 @@ function Net.EventEmitter:remove_listener(event_name, callback) end
 --- emitter:remove_on_any_listener(listener)
 --- emitter:emit("example_event", "c", "d")  -- no output
 --- ```
----@param event_name string
 ---@param callback fun()
-function Net.EventEmitter:remove_on_any_listener(event_name, callback) end
+function Net.EventEmitter:remove_on_any_listener(callback) end
 
 --- Returns an iterator that returns promises with the value set to `...` (Event custom parameters).
 ---
@@ -316,9 +320,8 @@ function Net.EventEmitter:async_iter(event_name) end
 --- emitter:emit("example_event", "c", "d")
 --- emitter:destroy()
 --- ```
----@param event_name string
 ---@return fun(): Net.Promise
-function Net.EventEmitter:async_iter_all(event_name) end
+function Net.EventEmitter:async_iter_all() end
 
 --- Allows async iterators to complete. Otherwise iterators will wait until the program ends.
 ---
@@ -389,6 +392,29 @@ function Net.get_tile_width(area_id) end
 ---@param area_id string
 ---@return number
 function Net.get_tile_height(area_id) end
+
+--- Returns the screen position using multi-values.
+---
+--- ```lua
+--- local x, y = Net.world_to_screen_multi(area_id, x, y)
+--- ```
+---@param area_id string
+---@param x number
+---@param y number
+---@param z? number
+---@return number, number
+function Net.world_to_screen_multi(area_id, x, y, z) end
+
+--- Returns the world position using multi-values.
+---
+--- ```lua
+--- local x, y = Net.screen_to_world_multi(area_id, x, y)
+--- ```
+---@param area_id string
+---@param x number
+---@param y number
+---@return number, number
+function Net.screen_to_world_multi(area_id, x, y) end
 
 --- Returns a [Net.CustomProperties](https://docs.hubos.dev/server/lua-api/objects#netcustomproperties)
 ---@param area_id string
@@ -481,6 +507,17 @@ function Net.set_foreground(area_id, texture_path, animation_path, vel_x, vel_y,
 ---@param area_id string
 ---@return Net.Position
 function Net.get_spawn_position(area_id) end
+
+--- Returns the spawn position using multi-values.
+---
+--- Defaults to either the Home Warp or (0, 0, 0)
+---
+--- ```lua
+--- local x, y, z = Net.get_spawn_position_multi(area_id)
+--- ```
+---@param area_id string
+---@return number, number, number
+function Net.get_spawn_position_multi(area_id) end
 
 --- Sets the default spawn position for players entering the area.
 ---@param area_id string
@@ -587,17 +624,17 @@ function Net.remove_object(area_id, object_id) end
 ---@param name string
 function Net.set_object_name(area_id, object_id, name) end
 
---- Changes the object's class, clients will be updated at the end of the tick.
----@param area_id string
----@param object_id number|string
----@param class string
-function Net.set_object_class(area_id, object_id, class) end
-
---- Deprecated. Use set_object_class instead.
+--- Changes the object's type, clients will be updated at the end of the tick.
 ---@param area_id string
 ---@param object_id number|string
 ---@param type string
 function Net.set_object_type(area_id, object_id, type) end
+
+--- Deprecated. Use set_object_type instead.
+---@param area_id string
+---@param object_id number|string
+---@param class string
+function Net.set_object_class(area_id, object_id, class) end
 
 --- Modifies an object's custom property, clients will be updated at the end of the tick.
 ---@param area_id string
@@ -625,6 +662,12 @@ function Net.set_object_rotation(area_id, object_id, rotation) end
 ---@param visibility boolean
 function Net.set_object_visibility(area_id, object_id, visibility) end
 
+--- If `private` is true, this object won't be sent to clients.
+---@param area_id string
+---@param object_id number|string
+---@param private boolean
+function Net.set_object_privacy(area_id, object_id, private) end
+
 --- Moves the object, clients will be updated at the end of the tick.
 ---@param area_id string
 ---@param object_id number|string
@@ -640,6 +683,16 @@ function Net.move_object(area_id, object_id, x, y, layer) end
 ---@param object_id number|string
 ---@param object_data Net.ObjectData
 function Net.set_object_data(area_id, object_id, object_data) end
+
+--- Returns true if the point is inside of the object.
+---
+--- Supports rectangle, ellipse, and polygon shape objects. Any other objects, such as tile objects, will always return false.
+---@param area_id string
+---@param object_id number|string
+---@param x number
+---@param y number
+---@return boolean
+function Net.is_inside_object(area_id, object_id, x, y) end
 
 --- Returns true if the player is in a server sent battle, or if a board, shop, or textbox is open.
 ---@param player_id Net.ActorId
@@ -685,6 +738,31 @@ function Net.message_player(player_id, message, mug_texture_path, mug_animation_
 ---@param message string
 ---@param textbox_options? Net.TextboxOptions
 function Net.message_player(player_id, message, textbox_options) end
+
+--- - `message`: `string`
+--- - `close_delay`: `number` the duration to wait after the text finishes animating to automatically move on.
+---
+--- Displays a textbox with the message and mug.
+---
+--- See [textbox_response](https://docs.hubos.dev/server/lua-api/events#textbox_response) or the [async](https://docs.hubos.dev/server/lua-api/async#asyncmessage_player_autoplayer_id-message-close_delay-mug_texture_path-mug_animation_path) version of this function for handling responses.
+---@param player_id Net.ActorId
+---@param message string
+---@param close_delay number
+---@param mug_texture_path? string
+---@param mug_animation_path? string
+function Net.message_player_auto(player_id, message, close_delay, mug_texture_path, mug_animation_path) end
+
+--- - `message`: `string`
+--- - `close_delay`: `number` the duration to wait after the text finishes animating to automatically move on.
+--- - `textbox_options`: [Net.TextboxOptions](https://docs.hubos.dev/server/lua-api/widgets#nettextboxoptions)
+---
+--- Displays a textbox with the message and mug.
+---
+--- See [textbox_response](https://docs.hubos.dev/server/lua-api/events#textbox_response) or the [async](https://docs.hubos.dev/server/lua-api/async#asyncmessage_player_autoplayer_id-message-close_delay-textbox_options) version of this function for handling responses.
+---@param player_id Net.ActorId
+---@param message string
+---@param textbox_options? Net.TextboxOptions
+function Net.message_player_auto(player_id, message, textbox_options) end
 
 --- - `question`: `string`
 ---
@@ -1479,6 +1557,11 @@ function Net.get_asset_type(server_path) end
 ---@return number
 function Net.get_asset_size(server_path) end
 
+--- Returns the asset's hash string.
+---@param server_path string
+---@return string
+function Net.get_asset_hash(server_path) end
+
 --- Allows for assets to be sent ahead of time to reduce apparent server hiccups.
 ---
 --- Calling in response to `player_request` will cause cached files on the client to be ignored.
@@ -1536,7 +1619,7 @@ function Async.create_promise(callback) end
 ---@return any
 function Async.await(promise) end
 
---- Retruns an iterator from an async iterator (an iterator which returns promises).
+--- Returns an iterator from an async iterator (an iterator which returns promises).
 ---
 --- Can only be used within a coroutine. Use `Async.promisify()` to let the server handle resuming the coroutine.
 ---
@@ -1575,6 +1658,7 @@ function Async.await(promise) end
 --- end))
 --- ```
 ---@param async_iterator fun(): Net.Promise<any>
+---@return fun(): any
 function Async.await(async_iterator) end
 
 --- Can only be used within an async scope or coroutine.
@@ -1648,6 +1732,13 @@ function Async.read_file(path) end
 ---@return Net.Promise<boolean>
 function Async.write_file(path, content) end
 
+--- Creates a directory at `path` if it does not already exist.
+---
+--- Returns a promise.
+---@param path string
+---@return Net.Promise<nil>
+function Async.ensure_dir(path) end
+
 --- Returns a promise that resolves to `{}?`
 ---@param address string
 ---@return Net.Promise<{}|nil>
@@ -1679,6 +1770,25 @@ function Async.message_player(player_id, message, mug_texture_path, mug_animatio
 ---@param textbox_options? Net.TextboxOptions
 ---@return Net.Promise<0|nil>
 function Async.message_player(player_id, message, textbox_options) end
+
+--- Returns a promise that resolves to `0` or `nil` for disconnected.
+---@param player_id Net.ActorId
+---@param message string
+---@param close_delay number
+---@param mug_texture_path? string
+---@param mug_animation_path? string
+---@return Net.Promise<0|nil>
+function Async.message_player_auto(player_id, message, close_delay, mug_texture_path, mug_animation_path) end
+
+--- - `textbox_options`: [Net.TextboxOptions](https://docs.hubos.dev/server/lua-api/widgets#nettextboxoptions)
+---
+--- Returns a promise that resolves to `0` or `nil` for disconnected.
+---@param player_id Net.ActorId
+---@param message string
+---@param close_delay number
+---@param textbox_options? Net.TextboxOptions
+---@return Net.Promise<0|nil>
+function Async.message_player_auto(player_id, message, close_delay, textbox_options) end
 
 --- Returns a promise that resolves to `1` for yes, `0` for no, and `nil` for disconnected.
 ---@param player_id Net.ActorId

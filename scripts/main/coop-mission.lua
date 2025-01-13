@@ -1,4 +1,4 @@
-local BotPathPlugin = require("scripts/main/plugins/bot_path")
+local BotPaths = require("scripts/libs/bot_paths")
 local LetsGoPlugin = require("scripts/main/plugins/lets_go")
 local SpikeyPlugin = require("scripts/main/plugins/spikey")
 local ButtonsPlugin = require("scripts/main/plugins/buttons")
@@ -14,7 +14,7 @@ local SURPRISED_EMOTE = "EXCLAMATION MARK!"
 ---@field alive_time number
 ---@field area_id any
 ---@field activity Activity
----@field bot_path_plugin BotPathPlugin
+---@field bot_paths BotPaths
 ---@field lets_go_plugin LetsGoPlugin
 ---@field spikey_plugin SpikeyPlugin
 ---@field buttons_plugin ButtonsPlugin
@@ -39,7 +39,7 @@ function CoopMission:new(activity, base_area_id)
     alive_time = 0,
     area_id = area_id,
     activity = activity,
-    bot_path_plugin = BotPathPlugin:new(activity),
+    bot_paths = BotPaths:new(),
     lets_go_plugin = LetsGoPlugin:new(activity),
     spikey_plugin = SpikeyPlugin:new(activity),
     buttons_plugin = ButtonsPlugin:new(activity),
@@ -98,10 +98,9 @@ function CoopMission:init(activity)
         shared = true
       })
 
-      self.bot_path_plugin:register_bot({
-        bot_id = bot_id,
+      self.bot_paths:init_bot(bot_id, {
         path = path,
-        speed = tonumber(object.custom_properties["Speed"]),
+        speed = tonumber(object.custom_properties["Speed"])
       })
     elseif object.name == "Spikey" then
       local bot_id = Net.create_bot({
@@ -207,13 +206,19 @@ function CoopMission:init(activity)
 
   -- pause attacks and movements when viruses are in an encounter
   self.lets_go_plugin:on_collision(function(bot_id, player_id)
-    self.bot_path_plugin:disable_bot(bot_id)
+    if self.bot_paths:bot_initialized(bot_id) then
+      self.bot_paths:pause_path(bot_id)
+    end
+
     self.spikey_plugin:disable_bot(bot_id)
     Net.set_player_emote(player_id, SURPRISED_EMOTE)
   end)
 
   self.lets_go_plugin:on_encounter_end(function(bot_id)
-    self.bot_path_plugin:enable_bot(bot_id)
+    if self.bot_paths:bot_initialized(bot_id) then
+      self.bot_paths:resume_path(bot_id)
+    end
+
     self.spikey_plugin:enable_bot(bot_id)
   end)
 
@@ -228,9 +233,9 @@ function CoopMission:init(activity)
       self:delete_player(event.player_id)
     elseif not event.ran then
       -- victory
-      local still_exists = self.lets_go_plugin:remove_bot(bot_id)
-      self.bot_path_plugin:remove_bot(bot_id)
-      self.spikey_plugin:remove_bot(bot_id)
+      local still_exists = self.lets_go_plugin:drop_bot(bot_id)
+      self.bot_paths:drop_bot(bot_id)
+      self.spikey_plugin:drop_bot(bot_id)
 
       if still_exists then
         Async.sleep(1).and_then(function()
@@ -293,6 +298,8 @@ function CoopMission:init(activity)
 
   -- cleanup
   activity:on("activity_destroyed", function()
+    self.bot_paths:destroy()
+
     for _, id in ipairs(Net.list_bots(self.area_id)) do
       Net.remove_bot(id)
     end

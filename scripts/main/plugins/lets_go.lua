@@ -66,7 +66,7 @@ function LetsGoPlugin:register_bot(options)
   table.insert(self._bots, bot)
 end
 
-function LetsGoPlugin:remove_bot(bot_id)
+function LetsGoPlugin:drop_bot(bot_id)
   for i, bot in ipairs(self._bots) do
     if bot.id == bot_id then
       table.remove(self._bots, i)

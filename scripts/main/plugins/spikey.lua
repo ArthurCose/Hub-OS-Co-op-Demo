@@ -100,7 +100,7 @@ function SpikeyPlugin:disable_bot(bot_id)
   end
 end
 
-function SpikeyPlugin:remove_bot(bot_id)
+function SpikeyPlugin:drop_bot(bot_id)
   for i, bot in ipairs(self._spikeys) do
     if bot.id == bot_id then
       table.remove(self._spikeys, i)
