@@ -82,14 +82,28 @@ function CoopMission:init(activity)
         z = object.z,
       })
 
-      local path = { object }
+      local path = {
+        {
+          x = object.x,
+          y = object.y,
+          z = object.z,
+        }
+      }
       local next_id = tonumber(object.custom_properties["Next"])
 
       while next_id ~= nil and next_id ~= object.id do
         local next_object = Net.get_object_by_id(self.area_id, next_id)
-        table.insert(path, next_object)
+
+        path[#path].next = #path + 1
+        table.insert(path, {
+          x = next_object.x,
+          y = next_object.y,
+          z = next_object.z
+        })
         next_id = tonumber(next_object.custom_properties["Next"])
       end
+
+      path[#path].next = 1
 
       self.lets_go_plugin:register_bot({
         bot_id = bot_id,
