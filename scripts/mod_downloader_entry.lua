@@ -2,6 +2,7 @@ local ModDownloader = require("scripts/libs/mod_downloader")
 
 local package_ids = {
   -- encounters
+  "BattleNetwork6.CircusMan",
   "BattleNetwork3.Enemy.Spikey",
   "BattleNetwork3.Metrid",
   "BattleNetwork4.Gaia",
