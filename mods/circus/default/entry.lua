@@ -13,8 +13,6 @@ function encounter_init(encounter)
     encounter:spawn_player(1, 2, 3)
   end
 
-  local field = encounter:field()
-
   local layouts = {
     function()
       -- wide bolt
@@ -25,14 +23,14 @@ function encounter_init(encounter)
               not ((y == 3 and x == 6))
 
           if add_grass then
-            local tile = field:tile_at(x, y)
+            local tile = Field.tile_at(x, y)
             tile:set_state(TileState.Grass)
           end
         end
       end
 
-      field:spawn(Boulder:create_obstacle(), 1, 3)
-      field:spawn(Boulder:create_obstacle(), 5, 2)
+      Field.spawn(Boulder:create_obstacle(), 1, 3)
+      Field.spawn(Boulder:create_obstacle(), 5, 2)
 
       encounter:create_spawner(METTAUR_ID, Rank.V3)
           :spawn_at(4, 2)
@@ -47,7 +45,7 @@ function encounter_init(encounter)
               not ((y == 1 or y == 3) and (x == 1 or x == 6))
 
           if add_grass then
-            local tile = field:tile_at(x, y)
+            local tile = Field.tile_at(x, y)
             tile:set_state(TileState.Grass)
           end
         end
@@ -64,13 +62,13 @@ function encounter_init(encounter)
       -- full
       for x = 1, 6 do
         for y = 1, 3 do
-          local tile = field:tile_at(x, y)
+          local tile = Field.tile_at(x, y)
           tile:set_state(TileState.Grass)
         end
       end
 
-      field:spawn(Boulder:create_obstacle(), 5, 3)
-      field:spawn(Boulder:create_obstacle(), 1, 2)
+      Field.spawn(Boulder:create_obstacle(), 5, 3)
+      Field.spawn(Boulder:create_obstacle(), 1, 2)
 
       encounter:create_spawner(METTAUR_ID, Rank.V3)
           :spawn_at(4, 2)
@@ -88,14 +86,14 @@ function encounter_init(encounter)
               not (y == 2 and x == 1)
 
           if add_grass then
-            local tile = field:tile_at(x, y)
+            local tile = Field.tile_at(x, y)
             tile:set_state(TileState.Grass)
           end
         end
       end
 
-      field:spawn(Boulder:create_obstacle(), 3, 2)
-      field:spawn(Boulder:create_obstacle(), 5, 1)
+      Field.spawn(Boulder:create_obstacle(), 3, 2)
+      Field.spawn(Boulder:create_obstacle(), 5, 1)
 
       encounter:create_spawner(GAIA_ID, Rank.EX)
           :spawn_at(4, 3)

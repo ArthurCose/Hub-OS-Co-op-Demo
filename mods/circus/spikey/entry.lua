@@ -6,8 +6,6 @@ function encounter_init(encounter)
     encounter:spawn_player(1, 2, 3)
   end
 
-  local field = encounter:field()
-
   if math.random(2) == 1 then
     -- bolt
     for y = 1, 3 do
@@ -18,9 +16,9 @@ function encounter_init(encounter)
       end
 
       for x = 2, x_end do
-        local tile = field:tile_at(x, y)
+        local tile = Field.tile_at(x, y)
         if y == 3 then
-          tile = field:tile_at(x + 1, y)
+          tile = Field.tile_at(x + 1, y)
         end
         tile:set_state(TileState.Grass)
       end
@@ -34,7 +32,7 @@ function encounter_init(encounter)
     -- slash
     for x = 0, 3 do
       for y = 1, 3 do
-        local tile = field:tile_at(x + y, y)
+        local tile = Field.tile_at(x + y, y)
         tile:set_state(TileState.Grass)
       end
     end
